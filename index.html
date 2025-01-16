@@ -17,6 +17,7 @@
             color: white;
             font-family: Arial, sans-serif;
             text-align: center;
+            cursor: pointer; /* Zeigt dem Nutzer an, dass man klicken kann */
         }
 
         h1 {
@@ -28,20 +29,6 @@
         p {
             font-size: 1.2rem;
             margin: 0 0 20px 0;
-        }
-
-        button {
-            padding: 10px 20px;
-            font-size: 1rem;
-            color: #006d5b;
-            background: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #e0f7ef;
         }
 
         @keyframes fadeIn {
@@ -56,13 +43,16 @@
         }
     </style>
 </head>
-<body>
+<body onclick="redirectToStart()">
     <h1>Willkommen bei Grabenstein Sales</h1>
     <p>Gemeinsam starten. Gemeinsam wachsen.</p>
-    <button onclick="window.location.href='startseite.html'">Startseite</button>
 
     <script>
-        // Automatische Weiterleitung nach 5 Sekunden
+        function redirectToStart() {
+            window.location.href = "startseite.html"; // Link zur Startseite
+        }
+
+        // Automatische Weiterleitung nach 5 Sekunden (falls niemand klickt)
         setTimeout(function() {
             window.location.href = "startseite.html";
         }, 5000);
