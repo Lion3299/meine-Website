@@ -3,10 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Willkommen</title>
+    <title>Grabenstein Sales - Startseite</title>
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #006d5b;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        header p {
+            margin: 10px 0 0 0;
+            font-size: 1.2rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #004d40;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #006d5b, #00b894);
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        .content {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            flex: 1 1 calc(33.333% - 20px);
+            text-align: center;
+        }
+
+        .card h3 {
+            color: #006d5b;
+            font-size: 1.5rem;
+        }
+
+        .card p {
+            color: #555;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
-    <h2>Willkommen auf meiner Website!</h2>
-    <p>Diese Seite ist live über GitHub Pages.</p>
+    <!-- Header -->
+    <header>
+        <h1>Willkommen bei Grabenstein Sales</h1>
+        <p>Ihr Partner für Vertriebslösungen für Start-ups</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html">Startseite</a>
+        <a href="about.html">Über uns</a>
+        <a href="services.html">Unsere Angebote</a>
+        <a href="contact.html">Kontakt</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>Gemeinsam starten. Gemeinsam wachsen.</h2>
+        <p>Wir bieten Start-ups die optimale Vertriebsunterstützung, um ihre Produkte erfolgreich auf den Markt zu bringen.</p>
+    </section>
+
+    <!-- Main Content -->
+    <section class="content">
+        <div class="card">
+            <h3>Unsere Mission</h3>
+            <p>Start-ups auf ihrem Weg zu Wachstum und Erfolg zu unterstützen.</p>
+        </div>
+        <div class="card">
+            <h3>Unsere Leistungen</h3>
+            <p>Von der Strategie bis zur Umsetzung – wir kümmern uns um Ihren Vertrieb.</p>
+        </div>
+        <div class="card">
+            <h3>Kontaktieren Sie uns</h3>
+            <p>Wir sind bereit, gemeinsam mit Ihnen durchzustarten.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Grabenstein Sales. Alle Rechte vorbehalten.</p>
+    </footer>
 </body>
 </html>
