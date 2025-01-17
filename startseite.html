@@ -1,98 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grabenstein Sales</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grabenstein Sales</title>
+  <style>
+    /* Allgemeine Stile */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        nav {
-            position: relative;
-            background-color: #1f1f1f;
-            padding: 10px;
-        }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+    }
 
-        .hamburger {
-            display: inline-block;
-            cursor: pointer;
-        }
+    /* Hauptcontainer */
+    .container {
+      position: relative;
+      height: 100vh;
+      background: url('image.png') no-repeat center center/cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
 
-        .hamburger span {
-            display: block;
-            width: 25px;
-            height: 3px;
-            background-color: white;
-            margin: 5px 0;
-        }
+    /* Navigation oben */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: rgba(255, 255, 255, 0.8);
+    }
 
-        #menu {
-            position: absolute;
-            top: 50px;
-            left: 10px;
-            background-color: #1f1f1f;
-            border: 1px solid #444;
-            padding: 10px;
-            border-radius: 5px;
-        }
+    .navbar .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #2E8B57;
+    }
 
-        #menu.hidden {
-            display: none;
-        }
+    .navbar .nav-links {
+      display: flex;
+      gap: 20px;
+    }
 
-        #menu a {
-            display: block;
-            color: white;
-            text-decoration: none;
-            padding: 5px 0;
-        }
+    .navbar a {
+      text-decoration: none;
+      color: #333;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
 
-        #menu a:hover {
-            color: #00ff7f;
-        }
+    .navbar a:hover {
+      color: #2E8B57;
+    }
 
-        header {
-            text-align: center;
-            margin: 50px auto;
-        }
+    /* Zentraler Bereich */
+    .center-content {
+      text-align: center;
+      margin-top: -50px;
+    }
 
-        header h1 {
-            font-size: 2rem;
-            color: #333;
-        }
+    .center-content h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
 
-        header p {
-            font-size: 1rem;
-            color: #666;
-        }
-    </style>
+    .center-content p {
+      font-size: 1.2rem;
+      color: white;
+      margin-top: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    /* Footer-Bereich */
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+  </style>
 </head>
 <body>
-    <nav>
-        <div class="hamburger" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div id="menu" class="hidden">
-            <a href="#startseite">Startseite</a>
-            <a href="#ueber-uns">Über uns</a>
-            <a href="#angebote">Unsere Angebote</a>
-            <a href="#kontakt">Kontakt</a>
-        </div>
+  <div class="container">
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="logo">Logo</div>
+      <div class="nav-links">
+        <a href="#about">Über Uns</a>
+        <a href="#contact">Kontakt</a>
+        <a href="#references">Referenzen</a>
+      </div>
     </nav>
-    <header>
-        <h1>Willkommen bei Grabenstein Sales</h1>
-        <p>Wir machen Start-ups groß und helfen ihnen, ihre Produkte erfolgreich zu vermarkten!</p>
-    </header>
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('menu');
-            menu.classList.toggle('hidden');
-        }
-    </script>
+
+    <!-- Zentraler Bereich -->
+    <div class="center-content">
+      <h1>Grabenstein Sales</h1>
+      <p>Professioneller Vertrieb für Start-Ups</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      © 2025 Grabenstein Sales. Alle Rechte vorbehalten.
+    </footer>
+  </div>
 </body>
 </html>
