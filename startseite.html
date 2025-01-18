@@ -18,17 +18,18 @@
       color: #333;
     }
 
-    /* Container mit Hintergrundbild */
+    /* Container mit Hintergrundbild (Datei liegt im selben Ordner wie diese HTML-Datei) */
     .container {
       position: relative;
       height: 100vh;
-      background: url('image.png') no-repeat center center/cover;
+      /* Pfad zum Bild ohne Unterordner */
+      background: url('background.jpg') no-repeat center center / cover;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
 
-    /* Dunkler Overlay über dem Hintergrundbild (für bessere Lesbarkeit) */
+    /* Dunkler Overlay über dem Hintergrund (für bessere Lesbarkeit) */
     .container::before {
       content: "";
       position: absolute;
@@ -40,7 +41,7 @@
     /* NAVIGATION */
     .navbar {
       position: relative;
-      z-index: 2; /* Über dem Overlay */
+      z-index: 2; /* über dem Overlay */
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -48,7 +49,7 @@
       background-color: rgba(255, 255, 255, 0.8);
     }
 
-    /* Aufteilung der Navbar in drei Bereiche: links / mitte / rechts */
+    /* Aufteilung in drei Bereiche (links, mitte, rechts) */
     .nav-left,
     .nav-center,
     .nav-right {
@@ -57,23 +58,23 @@
     }
 
     .nav-left {
-      gap: 20px; /* Abstand zwischen Logo und "Über uns" */
+      gap: 20px; /* Abstand zwischen Logo und „Über uns“ */
     }
 
-    /* Platzhalter fürs Logo */
+    /* Logo */
     .logo-img {
-      height: 40px; /* Größe anpassen, wie du möchtest */
+      height: 40px; /* Größe anpassen */
       width: auto;
     }
 
-    /* Überschrift in der Mitte der Navbar */
+    /* Überschrift in der Mitte (Headline) */
     .nav-center h1 {
       font-size: 1.6rem;
       font-weight: bold;
       color: #2E8B57;
     }
 
-    /* Navigation rechts */
+    /* Links auf der rechten Seite */
     .nav-right a {
       text-decoration: none;
       color: #333;
@@ -84,7 +85,7 @@
       color: #2E8B57;
     }
 
-    /* Verlinkung "Über uns" links neben dem Logo (falls gewünscht) */
+    /* Über-uns-Link links neben dem Logo */
     .nav-left a {
       text-decoration: none;
       color: #333;
@@ -142,7 +143,7 @@
       background-color: rgba(255, 255, 255, 0.8);
     }
 
-    /* Sektionen außerhalb des Fullscreen-Containers */
+    /* Abschnitte unterhalb des Fullscreen-Containers */
     section {
       padding: 60px 20px;
       max-width: 800px;
@@ -158,19 +159,19 @@
       font-size: 1rem;
       line-height: 1.6;
     }
+
   </style>
 </head>
 <body>
 
-  <!-- Container mit Header, Inhalt und Footer -->
+  <!-- Container mit Hintergrundbild -->
   <div class="container">
     <!-- NAVIGATION -->
     <nav class="navbar">
-      <!-- Links: Logo + "Über uns" -->
+      <!-- Links: Logo + „Über Uns“ -->
       <div class="nav-left">
-        <!-- Beispiel-Logo (Platzhalter) -->
-        <!-- Setze hier z.B. <img src="logo.png" alt="Logo" class="logo-img"> statt "LOGO" -->
-        <img src="logo.png" alt="Logo" class="logo-img">
+        <!-- Falls du ein eigenes Logo hast, einfach hier einfügen -->
+        <img src="logo.png" alt="Logo Grabenstein Sales" class="logo-img">
 
         <a href="#about">Über Uns</a>
       </div>
@@ -191,7 +192,7 @@
     <div class="center-content">
       <h2>Grabenstein Sales</h2>
       <p>Professioneller Vertrieb für Start-Ups</p>
-      <!-- Button mit Link zu den Angeboten -->
+      <!-- Button zu Angeboten -->
       <a href="#angebote" class="cta-button">Zu den Angeboten</a>
     </div>
 
@@ -201,45 +202,41 @@
     </footer>
   </div>
 
-  <!-- HIER KÖNNEN WEITERE SEKTIONEN FOLGEN -->
+  <!-- Sektionen unterhalb des Fullscreen-Bereichs -->
   <section id="about">
     <h2>Über Uns</h2>
     <p>
-      Hier kannst du deinen „Über uns“-Inhalt platzieren: Wer ihr seid, welche Mission 
-      ihr habt, euer Team usw.
+      Stelle hier dein Unternehmen vor, euer Team, eure Mission usw.
     </p>
   </section>
 
   <section id="references">
     <h2>Referenzen</h2>
     <p>
-      Stelle hier eure bisherigen Erfolge, Kundenprojekte oder Erfahrungen vor.
+      Welche Projekte habt ihr erfolgreich umgesetzt? Welche Kunden habt ihr betreut?
     </p>
   </section>
 
-  <!-- Angebote -->
   <section id="angebote">
     <h2>Unsere Angebote</h2>
     <p>
-      Hier kannst du deine Produkte, Dienstleistungen oder Pakete aufzählen.
+      Liste hier deine Produkte oder Dienstleistungen auf.
     </p>
   </section>
 
   <section id="contact">
     <h2>Kontakt</h2>
     <p>
-      Kontaktdaten oder Kontaktformular für Interessenten.  
-      Beispiel: E-Mail an <a href="mailto:grabenstein.sales@outlook.com">grabenstein.sales@outlook.com</a>
+      Wie können potenzielle Kunden dich erreichen? Füge hier deine Kontaktdaten ein.
     </p>
   </section>
 
-  <!-- Optionales JavaScript (derzeit leer, falls du etwas hinzufügen möchtest) -->
+  <!-- Optionales JavaScript -->
   <script>
-    // Hier kannst du eigene JavaScript-Funktionen einbauen, falls nötig.
+    // Falls du noch eigene JavaScript-Funktionen brauchst, kannst du sie hier hinzufügen.
   </script>
 </body>
 </html>
-    
 
   
    
