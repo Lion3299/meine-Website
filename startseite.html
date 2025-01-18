@@ -37,7 +37,7 @@
       z-index: 1;
     }
 
-    /* NAVIGATION – jetzt transparent, liegt auf dem Hintergrundbild */
+    /* NAVIGATION – transparent, liegt über dem Hintergrundbild */
     .navbar {
       position: relative;
       z-index: 2; /* Über dem Overlay */
@@ -46,10 +46,10 @@
       justify-content: space-between;
       padding: 20px 40px;
       background: transparent; /* Kein weißer Hintergrund mehr */
-      border-bottom: 2px solid #2E8B57; /* Dünne Linie zur Abgrenzung */
+      border-bottom: 2px solid #fff; /* Dünne weiße Linie zur Abgrenzung */
     }
 
-    /* Aufteilung der Navbar in drei Bereiche: links, mitte, rechts */
+    /* Linke, mittlere und rechte Bereiche in der Navbar */
     .nav-left,
     .nav-center,
     .nav-right {
@@ -57,8 +57,14 @@
       align-items: center;
     }
 
+    /* Mehr Abstand zwischen Logo und 'Über Uns' */
     .nav-left {
-      gap: 20px; /* Abstand zwischen Logo und "Über uns" */
+      gap: 40px; /* Passe den Wert nach Belieben an */
+    }
+
+    /* Mehr Abstand zwischen 'Referenzen' und 'Kontakt' */
+    .nav-right {
+      gap: 40px; /* Passe den Wert nach Belieben an */
     }
 
     /* Logo-Bild (falls vorhanden) */
@@ -67,20 +73,20 @@
       width: auto;
     }
 
-    /* Die Schriftfarbe in der Navigation entspricht dem Trennlinien-Farbcode (#2E8B57) */
+    /* Schrift in der Navigation: Weiß */
     .nav-left a,
     .nav-center h1,
     .nav-right a {
-      color: #2E8B57;
+      color: #fff;
       text-decoration: none;
       font-weight: bold;
       transition: color 0.3s;
     }
 
-    /* Hover-Effekt für Links rechts und links */
+    /* Hover-Farbe in der Navigation: dezentes Hellgrau, damit man den Effekt sieht */
     .nav-left a:hover,
     .nav-right a:hover {
-      color: #228b4d;
+      color: #ccc;
     }
 
     /* ZENTRALER BEREICH, auf dem Hintergrundbild */
@@ -117,7 +123,6 @@
       border-radius: 5px;
       transition: background-color 0.3s ease;
     }
-
     .cta-button:hover {
       background-color: #228b4d;
     }
@@ -137,14 +142,12 @@
       max-width: 800px;
       margin: 0 auto;
     }
-
     section h2 {
       font-size: 2rem;
       color: #2E8B57;
       margin-bottom: 20px;
       text-align: center;
     }
-
     section p {
       font-size: 1rem;
       line-height: 1.6;
@@ -224,11 +227,9 @@
 
   <!-- JavaScript (falls benötigt) -->
   <script>
-    // Hier kannst du eigenes JavaScript einbinden
+    // Hier kannst du eigenes JavaScript einbinden, falls nötig.
   </script>
-
 </body>
 </html>
-
   
    
