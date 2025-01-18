@@ -23,9 +23,8 @@
       position: relative;
       height: 100vh;
       background: url('background.jpg') no-repeat center center / cover;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      display: flex;              /* Flex-Layout für vertikale Anordnung */
+      flex-direction: column;     /* Navbar oben, Center-Content darunter */
     }
 
     /* Dunkler Overlay über dem Hintergrundbild (für bessere Lesbarkeit) */
@@ -37,16 +36,16 @@
       z-index: 1;
     }
 
-    /* NAVIGATION – transparent, liegt über dem Hintergrundbild */
+    /* NAVIGATION – transparent, oben fixiert am Container */
     .navbar {
       position: relative;
       z-index: 2; /* Über dem Overlay */
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: space-between; /* Logo/Über uns links, Grabenstein Sales in Mitte, Referenzen/Kontakt rechts */
       padding: 20px 40px;
-      background: transparent; /* Kein weißer Hintergrund mehr */
-      border-bottom: 2px solid #fff; /* Dünne weiße Linie zur Abgrenzung */
+      background: transparent;
+      border-bottom: 2px solid #fff;  /* Dünne weiße Linie zur Abgrenzung */
     }
 
     /* Linke, mittlere und rechte Bereiche in der Navbar */
@@ -59,12 +58,12 @@
 
     /* Mehr Abstand zwischen Logo und 'Über Uns' */
     .nav-left {
-      gap: 40px; /* Passe den Wert nach Belieben an */
+      gap: 40px;
     }
 
     /* Mehr Abstand zwischen 'Referenzen' und 'Kontakt' */
     .nav-right {
-      gap: 40px; /* Passe den Wert nach Belieben an */
+      gap: 40px;
     }
 
     /* Logo-Bild (falls vorhanden) */
@@ -83,18 +82,23 @@
       transition: color 0.3s;
     }
 
-    /* Hover-Farbe in der Navigation: dezentes Hellgrau, damit man den Effekt sieht */
+    /* Hover-Farbe in der Navigation: dezentes Hellgrau */
     .nav-left a:hover,
     .nav-right a:hover {
       color: #ccc;
     }
 
-    /* ZENTRALER BEREICH, auf dem Hintergrundbild */
+    /* ZENTRALER BEREICH, jetzt vertikal zentriert */
     .center-content {
       position: relative;
-      z-index: 2; /* Über dem Overlay */
+      z-index: 2;    /* über dem Overlay */
+      flex: 1;       /* nimmt den freien Platz unterhalb der Navbar ein */
+      display: flex; /* um Inhalt zu zentrieren */
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      margin-top: -50px; /* Kannst du anpassen, falls dir der Abstand zu groß/klein ist */
+      /* margin-top: -50px; ENTFERNT */
     }
 
     .center-content h2 {
@@ -102,12 +106,12 @@
       font-weight: bold;
       color: #fff;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      margin-bottom: 15px;
     }
 
     .center-content p {
       font-size: 1.2rem;
       color: #fff;
-      margin-top: 20px;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     }
 
@@ -127,7 +131,7 @@
       background-color: #228b4d;
     }
 
-    /* Abschnitte unterhalb des Fullscreen-Containers */
+    /* Die Abschnitte unterhalb des Fullscreen-Containers */
     section {
       padding: 60px 20px;
       max-width: 800px;
@@ -147,13 +151,13 @@
 </head>
 <body>
 
-  <!-- Container mit Hintergrundbild, Overlay und Navigation (kein Footer mehr) -->
+  <!-- Container mit Hintergrundbild, Overlay und Navbar (kein Footer) -->
   <div class="container">
-    <!-- NAVIGATION (transparent) -->
+    <!-- NAVIGATION -->
     <nav class="navbar">
       <!-- Links: Logo + "Über Uns" -->
       <div class="nav-left">
-        <!-- Ersetze 'logo.png' durch deinen Logo-Pfad, falls du ein Logo hast -->
+        <!-- Ersetze 'logo.png' durch deinen Logo-Pfad -->
         <img src="logo.png" alt="Logo Grabenstein Sales" class="logo-img">
         <a href="#about">Über Uns</a>
       </div>
@@ -170,7 +174,7 @@
       </div>
     </nav>
 
-    <!-- ZENTRALER BEREICH -->
+    <!-- ZENTRALER BEREICH (vertikal zentriert) -->
     <div class="center-content">
       <h2>Grabenstein Sales</h2>
       <p>Professioneller Vertrieb für Start-Ups</p>
@@ -213,7 +217,7 @@
 
   <!-- JavaScript (falls benötigt) -->
   <script>
-    // Hier kannst du eigenes JavaScript einbinden, falls nötig.
+    // Hier kannst du eigenes JavaScript einbinden, falls du es brauchst.
   </script>
 </body>
 </html>
