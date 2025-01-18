@@ -42,7 +42,7 @@
       z-index: 2; /* Über dem Overlay */
       display: flex;
       align-items: center;
-      justify-content: space-between; /* Logo + "Über Uns" links, "Grabenstein Sales" in der Mitte, "Referenzen" + "Kontakt" rechts */
+      justify-content: space-between;
       padding: 20px 40px;
       background: transparent;
       border-bottom: 2px solid #fff;  /* Dünne weiße Linie zur Abgrenzung */
@@ -56,19 +56,19 @@
       align-items: center;
     }
 
-    /* Mehr Abstand zwischen Logo und 'Über Uns' */
     .nav-left {
+      /* Mehr Abstand zwischen Logo und 'Über Uns' */
       gap: 40px;
     }
 
-    /* Mehr Abstand zwischen 'Referenzen' und 'Kontakt' */
     .nav-right {
+      /* Mehr Abstand zwischen 'Referenzen' und 'Kontakt' */
       gap: 40px;
     }
 
     /* Logo-Bild */
     .logo-img {
-      height: 40px; /* Größe anpassen, wenn du möchtest */
+      height: 40px; /* Anpassen, wenn du es größer/kleiner möchtest */
       width: auto;
     }
 
@@ -88,7 +88,7 @@
       color: #ccc;
     }
 
-    /* ZENTRALER BEREICH, jetzt vertikal zentriert */
+    /* ZENTRALER BEREICH, vertikal zentriert */
     .center-content {
       position: relative;
       z-index: 2;    /* über dem Overlay */
@@ -131,7 +131,7 @@
       background-color: #228b4d;
     }
 
-    /* Die Abschnitte unterhalb des Fullscreen-Containers */
+    /* Abschnitte unterhalb des Fullscreen-Containers */
     section {
       padding: 60px 20px;
       max-width: 800px;
@@ -147,6 +147,7 @@
       font-size: 1rem;
       line-height: 1.6;
     }
+
   </style>
 </head>
 <body>
@@ -157,7 +158,8 @@
     <nav class="navbar">
       <!-- Links: Logo + "Über Uns" -->
       <div class="nav-left">
-        <img src="logo.png" alt="Grabenstein Sales Logo" class="logo-img">
+        <!-- Jetzt mit neuem Logo "logo2.png" -->
+        <img src="logo2.png" alt="Grabenstein Sales Logo" class="logo-img">
         <a href="#about">Über Uns</a>
       </div>
 
@@ -215,9 +217,8 @@
 
   <!-- JavaScript (falls benötigt) -->
   <script>
-    // Hier kannst du eigenes JavaScript einbinden, falls du es brauchst.
+    // Falls du eigenes JavaScript brauchst, kannst du es hier einfügen.
   </script>
 </body>
-</html>
-  
+</html>  
    
