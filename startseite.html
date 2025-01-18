@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Grabenstein Sales</title>
   <style>
-    /* Grundlegende Stile zurücksetzen */
+    /* Reset: Grundlegende Stile zurücksetzen */
     * {
       margin: 0;
       padding: 0;
@@ -18,18 +18,17 @@
       color: #333;
     }
 
-    /* Container mit Hintergrundbild (Datei liegt im selben Ordner wie diese HTML-Datei) */
+    /* Container mit großem Hintergrundbild (Full Screen) */
     .container {
       position: relative;
       height: 100vh;
-      /* Pfad zum Bild ohne Unterordner */
       background: url('background.jpg') no-repeat center center / cover;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
 
-    /* Dunkler Overlay über dem Hintergrund (für bessere Lesbarkeit) */
+    /* Dunkler Overlay über dem Hintergrundbild (für bessere Lesbarkeit) */
     .container::before {
       content: "";
       position: absolute;
@@ -38,18 +37,19 @@
       z-index: 1;
     }
 
-    /* NAVIGATION */
+    /* NAVIGATION – jetzt transparent, liegt auf dem Hintergrundbild */
     .navbar {
       position: relative;
-      z-index: 2; /* über dem Overlay */
+      z-index: 2; /* Über dem Overlay */
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 20px 40px;
-      background-color: rgba(255, 255, 255, 0.8);
+      background: transparent; /* Kein weißer Hintergrund mehr */
+      border-bottom: 2px solid #2E8B57; /* Dünne Linie zur Abgrenzung */
     }
 
-    /* Aufteilung in drei Bereiche (links, mitte, rechts) */
+    /* Aufteilung der Navbar in drei Bereiche: links, mitte, rechts */
     .nav-left,
     .nav-center,
     .nav-right {
@@ -58,50 +58,37 @@
     }
 
     .nav-left {
-      gap: 20px; /* Abstand zwischen Logo und „Über uns“ */
+      gap: 20px; /* Abstand zwischen Logo und "Über uns" */
     }
 
-    /* Logo */
+    /* Logo-Bild (falls vorhanden) */
     .logo-img {
       height: 40px; /* Größe anpassen */
       width: auto;
     }
 
-    /* Überschrift in der Mitte (Headline) */
-    .nav-center h1 {
-      font-size: 1.6rem;
-      font-weight: bold;
-      color: #2E8B57;
-    }
-
-    /* Links auf der rechten Seite */
+    /* Die Schriftfarbe in der Navigation entspricht dem Trennlinien-Farbcode (#2E8B57) */
+    .nav-left a,
+    .nav-center h1,
     .nav-right a {
-      text-decoration: none;
-      color: #333;
-      margin-left: 20px;
-      transition: color 0.3s;
-    }
-    .nav-right a:hover {
       color: #2E8B57;
-    }
-
-    /* Über-uns-Link links neben dem Logo */
-    .nav-left a {
       text-decoration: none;
-      color: #333;
       font-weight: bold;
       transition: color 0.3s;
     }
-    .nav-left a:hover {
-      color: #2E8B57;
+
+    /* Hover-Effekt für Links rechts und links */
+    .nav-left a:hover,
+    .nav-right a:hover {
+      color: #228b4d;
     }
 
-    /* ZENTRALER INHALT */
+    /* ZENTRALER BEREICH, auf dem Hintergrundbild */
     .center-content {
       position: relative;
-      z-index: 2;
+      z-index: 2; /* Über dem Overlay */
       text-align: center;
-      margin-top: -50px;
+      margin-top: -50px; /* Kannst du anpassen, falls dir der Abstand zu groß/klein ist */
     }
 
     .center-content h2 {
@@ -130,6 +117,7 @@
       border-radius: 5px;
       transition: background-color 0.3s ease;
     }
+
     .cta-button:hover {
       background-color: #228b4d;
     }
@@ -149,30 +137,30 @@
       max-width: 800px;
       margin: 0 auto;
     }
+
     section h2 {
       font-size: 2rem;
       color: #2E8B57;
       margin-bottom: 20px;
       text-align: center;
     }
+
     section p {
       font-size: 1rem;
       line-height: 1.6;
     }
-
   </style>
 </head>
 <body>
 
-  <!-- Container mit Hintergrundbild -->
+  <!-- Container mit Hintergrundbild, Overlay, Navigation und Footer -->
   <div class="container">
-    <!-- NAVIGATION -->
+    <!-- NAVIGATION (transparent) -->
     <nav class="navbar">
-      <!-- Links: Logo + „Über Uns“ -->
+      <!-- Links: Logo + "Über Uns" -->
       <div class="nav-left">
-        <!-- Falls du ein eigenes Logo hast, einfach hier einfügen -->
+        <!-- Ersetze 'logo.png' durch deinen Logo-Pfad, falls du ein Logo hast -->
         <img src="logo.png" alt="Logo Grabenstein Sales" class="logo-img">
-
         <a href="#about">Über Uns</a>
       </div>
 
@@ -192,49 +180,53 @@
     <div class="center-content">
       <h2>Grabenstein Sales</h2>
       <p>Professioneller Vertrieb für Start-Ups</p>
-      <!-- Button zu Angeboten -->
+      <!-- Button zu den Angeboten -->
       <a href="#angebote" class="cta-button">Zu den Angeboten</a>
     </div>
 
-    <!-- FOOTER -->
+    <!-- FOOTER (leicht weißer Hintergrund) -->
     <footer class="footer">
       © 2025 Grabenstein Sales. Alle Rechte vorbehalten.
     </footer>
   </div>
 
-  <!-- Sektionen unterhalb des Fullscreen-Bereichs -->
+  <!-- SEKTION "Über Uns" -->
   <section id="about">
     <h2>Über Uns</h2>
     <p>
-      Stelle hier dein Unternehmen vor, euer Team, eure Mission usw.
+      Hier kannst du dein Unternehmen, dein Team und deine Philosophie genauer vorstellen.
     </p>
   </section>
 
+  <!-- SEKTION "Referenzen" -->
   <section id="references">
     <h2>Referenzen</h2>
     <p>
-      Welche Projekte habt ihr erfolgreich umgesetzt? Welche Kunden habt ihr betreut?
+      Zeige hier eure erfolgreich umgesetzten Projekte oder zufriedenen Kunden.
     </p>
   </section>
 
+  <!-- SEKTION "Angebote" -->
   <section id="angebote">
     <h2>Unsere Angebote</h2>
     <p>
-      Liste hier deine Produkte oder Dienstleistungen auf.
+      Liste hier eure Produkte, Dienstleistungen oder Pakete auf.
     </p>
   </section>
 
+  <!-- SEKTION "Kontakt" -->
   <section id="contact">
     <h2>Kontakt</h2>
     <p>
-      Wie können potenzielle Kunden dich erreichen? Füge hier deine Kontaktdaten ein.
+      Kontaktdaten oder Kontaktformular – du entscheidest, wie Interessenten dich erreichen.
     </p>
   </section>
 
-  <!-- Optionales JavaScript -->
+  <!-- JavaScript (falls benötigt) -->
   <script>
-    // Falls du noch eigene JavaScript-Funktionen brauchst, kannst du sie hier hinzufügen.
+    // Hier kannst du eigenes JavaScript einbinden
   </script>
+
 </body>
 </html>
 
