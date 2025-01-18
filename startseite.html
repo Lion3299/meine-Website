@@ -4,17 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Grabenstein Sales</title>
-  <!-- Google Fonts Beispiel -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
-  <!-- Meta-Tags für SEO -->
-  <meta name="description" content="Professioneller Vertrieb für Start-Ups. Grabenstein Sales unterstützt junge Unternehmen beim erfolgreichen Markteintritt.">
-  <meta name="keywords" content="Vertrieb, Grabenstein Sales, Start-Ups, Marketing, Consulting">
-
   <style>
-    /* Reset / Grundlegende Stile */
+    /* Grundlegende Stile zurücksetzen */
     * {
       margin: 0;
       padding: 0;
@@ -22,12 +13,12 @@
     }
 
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: Arial, sans-serif;
       background-color: #f5f5f5;
       color: #333;
     }
 
-    /* Hauptcontainer mit Hintergrundbild */
+    /* Container mit Hintergrundbild */
     .container {
       position: relative;
       height: 100vh;
@@ -37,7 +28,7 @@
       justify-content: space-between;
     }
 
-    /* Dunkler Overlay */
+    /* Dunkler Overlay über dem Hintergrundbild (für bessere Lesbarkeit) */
     .container::before {
       content: "";
       position: absolute;
@@ -46,50 +37,75 @@
       z-index: 1;
     }
 
-    /* Navigation */
+    /* NAVIGATION */
     .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;
-      background-color: rgba(255, 255, 255, 0.8);
-      position: relative;
-      z-index: 2; /* Damit die Navbar über dem Overlay liegt */
-    }
-
-    .navbar .logo {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: #2E8B57;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 20px;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: #333;
-      font-size: 1rem;
-      transition: color 0.3s;
-    }
-
-    .nav-links a:hover {
-      color: #2E8B57;
-    }
-
-    /* Zentraler Inhaltsbereich */
-    .center-content {
       position: relative;
       z-index: 2; /* Über dem Overlay */
-      text-align: center;
-      margin-top: -50px; /* Falls du den Text weiter oben haben willst */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      background-color: rgba(255, 255, 255, 0.8);
     }
 
-    .center-content h1 {
+    /* Aufteilung der Navbar in drei Bereiche: links / mitte / rechts */
+    .nav-left,
+    .nav-center,
+    .nav-right {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-left {
+      gap: 20px; /* Abstand zwischen Logo und "Über uns" */
+    }
+
+    /* Platzhalter fürs Logo */
+    .logo-img {
+      height: 40px; /* Größe anpassen, wie du möchtest */
+      width: auto;
+    }
+
+    /* Überschrift in der Mitte der Navbar */
+    .nav-center h1 {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #2E8B57;
+    }
+
+    /* Navigation rechts */
+    .nav-right a {
+      text-decoration: none;
+      color: #333;
+      margin-left: 20px;
+      transition: color 0.3s;
+    }
+    .nav-right a:hover {
+      color: #2E8B57;
+    }
+
+    /* Verlinkung "Über uns" links neben dem Logo (falls gewünscht) */
+    .nav-left a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    .nav-left a:hover {
+      color: #2E8B57;
+    }
+
+    /* ZENTRALER INHALT */
+    .center-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      margin-top: -50px;
+    }
+
+    .center-content h2 {
       font-size: 3rem;
-      font-weight: 600;
+      font-weight: bold;
       color: #fff;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     }
@@ -101,108 +117,129 @@
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     }
 
-    /* Beispiel für CTA-Button */
+    /* CTA-Button */
     .cta-button {
       display: inline-block;
       margin-top: 20px;
       padding: 15px 30px;
       background-color: #2E8B57;
       color: #fff;
-      font-weight: 600;
+      font-weight: bold;
       text-decoration: none;
       border-radius: 5px;
       transition: background-color 0.3s ease;
     }
-
     .cta-button:hover {
       background-color: #228b4d;
     }
 
-    /* Footer */
+    /* FOOTER */
     .footer {
+      position: relative;
+      z-index: 2;
       text-align: center;
       padding: 20px;
       background-color: rgba(255, 255, 255, 0.8);
-      position: relative;
-      z-index: 2;
     }
 
-    /* Sektionen für About, References, Contact (Beispiel) */
-    .section {
+    /* Sektionen außerhalb des Fullscreen-Containers */
+    section {
       padding: 60px 20px;
       max-width: 800px;
       margin: 0 auto;
     }
-
-    .section h2 {
+    section h2 {
       font-size: 2rem;
       color: #2E8B57;
       margin-bottom: 20px;
+      text-align: center;
     }
-
-    .section p {
+    section p {
       font-size: 1rem;
       line-height: 1.6;
     }
-
   </style>
 </head>
 <body>
 
+  <!-- Container mit Header, Inhalt und Footer -->
   <div class="container">
-    <!-- Navigation -->
+    <!-- NAVIGATION -->
     <nav class="navbar">
-      <div class="logo">Grabenstein Sales</div>
-      <div class="nav-links">
+      <!-- Links: Logo + "Über uns" -->
+      <div class="nav-left">
+        <!-- Beispiel-Logo (Platzhalter) -->
+        <!-- Setze hier z.B. <img src="logo.png" alt="Logo" class="logo-img"> statt "LOGO" -->
+        <img src="logo.png" alt="Logo Grabenstein Sales" class="logo-img">
+
         <a href="#about">Über Uns</a>
+      </div>
+
+      <!-- Mitte: Grabenstein Sales -->
+      <div class="nav-center">
+        <h1>Grabenstein Sales</h1>
+      </div>
+
+      <!-- Rechts: Referenzen + Kontakt -->
+      <div class="nav-right">
         <a href="#references">Referenzen</a>
         <a href="#contact">Kontakt</a>
       </div>
     </nav>
 
-    <!-- Zentraler Bereich -->
+    <!-- ZENTRALER BEREICH -->
     <div class="center-content">
-      <h1>Grabenstein Sales</h1>
+      <h2>Grabenstein Sales</h2>
       <p>Professioneller Vertrieb für Start-Ups</p>
-      <a href="#contact" class="cta-button">Jetzt Kontakt aufnehmen</a>
+      <!-- Button mit Link zu den Angeboten -->
+      <a href="#angebote" class="cta-button">Zu den Angeboten</a>
     </div>
 
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer class="footer">
       © 2025 Grabenstein Sales. Alle Rechte vorbehalten.
     </footer>
   </div>
 
-  <!-- Über Uns (Beispielsektion) -->
-  <section id="about" class="section">
+  <!-- HIER KÖNNEN WEITERE SEKTIONEN FOLGEN -->
+  <section id="about">
     <h2>Über Uns</h2>
     <p>
-      Grabenstein Sales ist ein junges, dynamisches Unternehmen, das sich auf den
-      Vertrieb von Produkten und Dienstleistungen für Start-Ups spezialisiert hat.
-      Mit unserer Expertise unterstützen wir Gründerinnen und Gründer beim erfolgreichen
-      Markteintritt.
+      Hier kannst du deinen „Über uns“-Inhalt platzieren: Wer ihr seid, welche Mission 
+      ihr habt, euer Team usw.
     </p>
   </section>
 
-  <!-- Referenzen (Beispielsektion) -->
-  <section id="references" class="section">
+  <section id="references">
     <h2>Referenzen</h2>
     <p>
-      Wir haben bereits zahlreiche Start-Ups erfolgreich begleitet. Eine Auswahl
-      unserer Projekte und Kunden findest du hier...
+      Stelle hier eure bisherigen Erfolge, Kundenprojekte oder Erfahrungen vor.
     </p>
   </section>
 
-  <!-- Kontakt (Beispielsektion) -->
-  <section id="contact" class="section">
+  <!-- Angebote -->
+  <section id="angebote">
+    <h2>Unsere Angebote</h2>
+    <p>
+      Hier kannst du deine Produkte, Dienstleistungen oder Pakete aufzählen.
+    </p>
+  </section>
+
+  <section id="contact">
     <h2>Kontakt</h2>
     <p>
-      Schreib uns eine E-Mail an <a href="mailto:info@grabenstein-sales.de">info@grabenstein-sales.de</a> 
-      oder nutze unser Kontaktformular, um dein Anliegen zu schildern. Wir freuen uns darauf, 
-      von dir zu hören!
+      Kontaktdaten oder Kontaktformular für Interessenten.  
+      Beispiel: E-Mail an <a href="mailto:info@grabenstein-sales.de">info@grabenstein-sales.de</a>
     </p>
-    <!-- Kontaktformular könnte hier integriert werden -->
   </section>
 
+  <!-- Optionales JavaScript (derzeit leer, falls du etwas hinzufügen möchtest) -->
+  <script>
+    // Hier kannst du eigene JavaScript-Funktionen einbauen, falls nötig.
+  </script>
 </body>
 </html>
+    
+
+  
+   
