@@ -42,7 +42,7 @@
       z-index: 2; /* Über dem Overlay */
       display: flex;
       align-items: center;
-      justify-content: space-between; /* Logo/Über uns links, Grabenstein Sales in Mitte, Referenzen/Kontakt rechts */
+      justify-content: space-between; /* Logo + "Über Uns" links, "Grabenstein Sales" in der Mitte, "Referenzen" + "Kontakt" rechts */
       padding: 20px 40px;
       background: transparent;
       border-bottom: 2px solid #fff;  /* Dünne weiße Linie zur Abgrenzung */
@@ -66,9 +66,9 @@
       gap: 40px;
     }
 
-    /* Logo-Bild (falls vorhanden) */
+    /* Logo-Bild */
     .logo-img {
-      height: 40px; /* Größe anpassen */
+      height: 40px; /* Größe anpassen, wenn du möchtest */
       width: auto;
     }
 
@@ -98,7 +98,6 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      /* margin-top: -50px; ENTFERNT */
     }
 
     .center-content h2 {
@@ -113,6 +112,7 @@
       font-size: 1.2rem;
       color: #fff;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      margin-top: 10px;
     }
 
     /* CTA-Button */
@@ -151,14 +151,13 @@
 </head>
 <body>
 
-  <!-- Container mit Hintergrundbild, Overlay und Navbar (kein Footer) -->
+  <!-- Container mit Hintergrundbild, Overlay und Navbar -->
   <div class="container">
     <!-- NAVIGATION -->
     <nav class="navbar">
       <!-- Links: Logo + "Über Uns" -->
       <div class="nav-left">
-        <!-- Ersetze 'logo.png' durch deinen Logo-Pfad -->
-        <img src="logo.png" alt="Logo" class="logo-img">
+        <img src="logo.png" alt="Grabenstein Sales Logo" class="logo-img">
         <a href="#about">Über Uns</a>
       </div>
 
@@ -178,12 +177,11 @@
     <div class="center-content">
       <h2>Gemeinsam Erfolg gestalten</h2>
       <p>Dein Partner für professionellen Vertrieb und nachhaltiges Wachstum.</p>
-      <!-- Button Jetzt starten -->
-      <a href="#angebote" class="cta-button"> Jetzt starten </a>
+      <a href="#angebote" class="cta-button">Jetzt starten</a>
     </div>
   </div>
 
-  <!-- SEKTION "Über Uns" -->
+  <!-- Über Uns -->
   <section id="about">
     <h2>Über Uns</h2>
     <p>
@@ -191,7 +189,7 @@
     </p>
   </section>
 
-  <!-- SEKTION "Referenzen" -->
+  <!-- Referenzen -->
   <section id="references">
     <h2>Referenzen</h2>
     <p>
@@ -199,7 +197,7 @@
     </p>
   </section>
 
-  <!-- SEKTION "Angebote" -->
+  <!-- Angebote -->
   <section id="angebote">
     <h2>Unsere Angebote</h2>
     <p>
@@ -207,7 +205,7 @@
     </p>
   </section>
 
-  <!-- SEKTION "Kontakt" -->
+  <!-- Kontakt -->
   <section id="contact">
     <h2>Kontakt</h2>
     <p>
