@@ -4,8 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Grabenstein Sales</title>
+  <!-- Google Fonts Beispiel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Meta-Tags für SEO -->
+  <meta name="description" content="Professioneller Vertrieb für Start-Ups. Grabenstein Sales unterstützt junge Unternehmen beim erfolgreichen Markteintritt.">
+  <meta name="keywords" content="Vertrieb, Grabenstein Sales, Start-Ups, Marketing, Consulting">
+
   <style>
-    /* Allgemeine Stile */
+    /* Reset / Grundlegende Stile */
     * {
       margin: 0;
       padding: 0;
@@ -13,12 +22,12 @@
     }
 
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins', sans-serif;
       background-color: #f5f5f5;
       color: #333;
     }
 
-    /* Hauptcontainer */
+    /* Hauptcontainer mit Hintergrundbild */
     .container {
       position: relative;
       height: 100vh;
@@ -28,74 +37,126 @@
       justify-content: space-between;
     }
 
-    /* Navigation oben */
+    /* Dunkler Overlay */
+    .container::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+
+    /* Navigation */
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 20px 40px;
       background-color: rgba(255, 255, 255, 0.8);
+      position: relative;
+      z-index: 2; /* Damit die Navbar über dem Overlay liegt */
     }
 
     .navbar .logo {
       font-size: 1.5rem;
-      font-weight: bold;
+      font-weight: 600;
       color: #2E8B57;
     }
 
-    .navbar .nav-links {
+    .nav-links {
       display: flex;
       gap: 20px;
     }
 
-    .navbar a {
+    .nav-links a {
       text-decoration: none;
       color: #333;
       font-size: 1rem;
       transition: color 0.3s;
     }
 
-    .navbar a:hover {
+    .nav-links a:hover {
       color: #2E8B57;
     }
 
-    /* Zentraler Bereich */
+    /* Zentraler Inhaltsbereich */
     .center-content {
+      position: relative;
+      z-index: 2; /* Über dem Overlay */
       text-align: center;
-      margin-top: -50px;
+      margin-top: -50px; /* Falls du den Text weiter oben haben willst */
     }
 
     .center-content h1 {
       font-size: 3rem;
-      font-weight: bold;
-      color: white;
+      font-weight: 600;
+      color: #fff;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     }
 
     .center-content p {
       font-size: 1.2rem;
-      color: white;
+      color: #fff;
       margin-top: 20px;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     }
 
-    /* Footer-Bereich */
+    /* Beispiel für CTA-Button */
+    .cta-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 15px 30px;
+      background-color: #2E8B57;
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background-color: #228b4d;
+    }
+
+    /* Footer */
     .footer {
       text-align: center;
       padding: 20px;
       background-color: rgba(255, 255, 255, 0.8);
+      position: relative;
+      z-index: 2;
     }
+
+    /* Sektionen für About, References, Contact (Beispiel) */
+    .section {
+      padding: 60px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .section h2 {
+      font-size: 2rem;
+      color: #2E8B57;
+      margin-bottom: 20px;
+    }
+
+    .section p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
   </style>
 </head>
 <body>
+
   <div class="container">
     <!-- Navigation -->
     <nav class="navbar">
-      <div class="logo">Logo</div>
+      <div class="logo">Grabenstein Sales</div>
       <div class="nav-links">
         <a href="#about">Über Uns</a>
-        <a href="#contact">Kontakt</a>
         <a href="#references">Referenzen</a>
+        <a href="#contact">Kontakt</a>
       </div>
     </nav>
 
@@ -103,6 +164,7 @@
     <div class="center-content">
       <h1>Grabenstein Sales</h1>
       <p>Professioneller Vertrieb für Start-Ups</p>
+      <a href="#contact" class="cta-button">Jetzt Kontakt aufnehmen</a>
     </div>
 
     <!-- Footer -->
@@ -110,5 +172,37 @@
       © 2025 Grabenstein Sales. Alle Rechte vorbehalten.
     </footer>
   </div>
+
+  <!-- Über Uns (Beispielsektion) -->
+  <section id="about" class="section">
+    <h2>Über Uns</h2>
+    <p>
+      Grabenstein Sales ist ein junges, dynamisches Unternehmen, das sich auf den
+      Vertrieb von Produkten und Dienstleistungen für Start-Ups spezialisiert hat.
+      Mit unserer Expertise unterstützen wir Gründerinnen und Gründer beim erfolgreichen
+      Markteintritt.
+    </p>
+  </section>
+
+  <!-- Referenzen (Beispielsektion) -->
+  <section id="references" class="section">
+    <h2>Referenzen</h2>
+    <p>
+      Wir haben bereits zahlreiche Start-Ups erfolgreich begleitet. Eine Auswahl
+      unserer Projekte und Kunden findest du hier...
+    </p>
+  </section>
+
+  <!-- Kontakt (Beispielsektion) -->
+  <section id="contact" class="section">
+    <h2>Kontakt</h2>
+    <p>
+      Schreib uns eine E-Mail an <a href="mailto:info@grabenstein-sales.de">info@grabenstein-sales.de</a> 
+      oder nutze unser Kontaktformular, um dein Anliegen zu schildern. Wir freuen uns darauf, 
+      von dir zu hören!
+    </p>
+    <!-- Kontaktformular könnte hier integriert werden -->
+  </section>
+
 </body>
 </html>
