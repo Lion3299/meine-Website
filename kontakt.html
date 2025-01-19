@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Kontakt – Grabenstein Sales</title>
   <style>
-    /* Reset: Grundlegende Stile zurücksetzen */
+    /* RESET */
     * {
       margin: 0;
       padding: 0;
@@ -14,95 +14,99 @@
 
     body {
       font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
+      background-color: #fff;
       color: #333;
-    }
-
-    /* Container für die gesamte Seite (Full Screen Hintergrund) */
-    .container {
-      position: relative;
-      height: 100vh; /* Volle Browser-Höhe */
-      background: url('background.jpg') no-repeat center center / cover;
+      min-height: 100vh; /* Damit der Inhalt zumindest eine Bildschirmhöhe einnimmt */
       display: flex;
-      flex-direction: column; /* Navigation oben, Inhalt darunter */
+      flex-direction: column;
     }
 
-    /* Overlay, um den Hintergrund etwas abzudunkeln */
-    .container::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-color: rgba(0, 0, 0, 0.4);
-      z-index: 1;
-    }
-
-    /* NAVIGATION oben */
+    /* NAVBAR (Headline) oben */
     .navbar {
-      position: relative;
-      z-index: 2; /* Über dem Overlay */
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 20px 40px;
-      background: transparent;
-      border-bottom: 2px solid #fff; /* dünne weiße Linie */
+      border-bottom: 2px solid #2E8B57; /* Dünne Linie in Grün (oder Weiß, wenn du willst) */
+      background-color: #fff;           /* Weiße Navbar */
     }
 
-    /* Navigation: links und rechts */
+    /* Linke und rechte Bereiche der Navbar */
     .nav-left, .nav-right {
       display: flex;
       align-items: center;
-      gap: 20px; /* Abstand zwischen den Links */
+      gap: 40px;
     }
 
-    /* Links in der Navigation: weißer Text, fett */
+    /* Logo-Bild (falls du das gleiche wie auf der Startseite möchtest) */
+    .logo-img {
+      height: 80px;
+      width: auto;
+    }
+
+    /* Links in der Navbar */
     .navbar a {
-      color: #fff;
+      color: #2E8B57; 
       text-decoration: none;
       font-weight: bold;
       transition: color 0.3s;
     }
     .navbar a:hover {
-      color: #ccc; /* Hover-Effekt */
+      color: #228b4d;
     }
 
-    /* HAUPTBEREICH – Kontaktformular zentrieren */
+    /* Hauptbereich: füllt den restlichen Platz */
     .main-content {
-      position: relative;
-      z-index: 2;  /* über dem Overlay */
-      flex: 1;     /* füllt den restlichen Platz */
+      flex: 1;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 40px; /* Innenabstand für kleinere Bildschirme */
+      justify-content: center; /* Horizontales Zentrieren */
+      align-items: center;     /* Vertikales Zentrieren */
+      padding: 40px;          /* Abstand zum Rand */
     }
 
-    /* Kontaktbox */
+    /* Kontaktbox über die ganze Seite:
+       Da wir sie an sich 'über die gesamte Seite' wollen, 
+       nehmen wir hier nur etwas max-width weg, damit es nicht zu breit auf sehr großen Screens wird. */
     .contact-box {
-      background-color: rgba(255, 255, 255, 0.9);
-      border-radius: 10px;
-      max-width: 500px;
       width: 100%;
-      padding: 30px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      max-width: 1200px; /* begrenzt die Breite auf sehr großen Bildschirmen */
+      background-color: #f5f5f5;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 40px;
     }
 
+    /* Überschrift in der Box */
     .contact-box h1 {
-      font-size: 1.8rem;
+      font-size: 2rem;
       color: #2E8B57;
       margin-bottom: 20px;
       text-align: center;
     }
 
-    /* Formular-Stile */
+    /* Formular-Layout */
     .contact-box form {
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 20px;
+    }
+
+    /* Eine Zeile für Name und Firma nebeneinander */
+    .form-row {
+      display: flex;
+      gap: 20px;
+    }
+
+    /* Damit sich beide Felder in .form-row die Breite teilen */
+    .form-row > div {
+      flex: 1; /* teilt den verfügbaren Platz gleichmäßig */
+      display: flex;
+      flex-direction: column; /* Label und Input untereinander */
     }
 
     .contact-box label {
       font-weight: bold;
+      margin-bottom: 5px;
     }
 
     .contact-box input[type="text"],
@@ -113,20 +117,22 @@
       border: 1px solid #ccc;
       border-radius: 5px;
       font-size: 1rem;
-      resize: vertical; /* Textarea kann in der Höhe vergrößert werden */
+      resize: vertical; 
     }
 
+    /* Textarea Mindesthöhe */
     .contact-box textarea {
-      min-height: 100px;
+      min-height: 120px;
     }
 
-    /* Senden-Button */
+    /* Button */
     .contact-box button {
+      align-self: flex-start; /* Damit der Button linksbündig unter den Feldern bleibt */
       background-color: #2E8B57;
       color: #fff;
       font-weight: bold;
       border: none;
-      padding: 15px;
+      padding: 15px 30px;
       border-radius: 5px;
       cursor: pointer;
       font-size: 1rem;
@@ -135,53 +141,59 @@
     .contact-box button:hover {
       background-color: #228b4d;
     }
-
-    /* FOOTER optional, hier weggelassen – falls du einen brauchst, kannst du ihn hinzufügen. */
   </style>
 </head>
 <body>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <!-- Falls du dein Logo hier haben möchtest, Logo2.png -->
+      <a href="startseite.html">
+        <img src="logo2.png" alt="Grabenstein Sales Logo" class="logo-img">
+      </a>
+    </div>
 
-  <!-- Container mit Hintergrund + Overlay -->
-  <div class="container">
-    <!-- NAVIGATION -->
-    <nav class="navbar">
-      <!-- Links: z.B. Startseite -->
-      <div class="nav-left">
-        <!-- Passe den Link zur Startseite an -->
-        <a href="startseite.html">Startseite</a>
-      </div>
+    <!-- Nur ein Link zur Startseite (keine Kontakt-Verlinkung) -->
+    <div class="nav-right">
+      <a href="startseite.html">Startseite</a>
+    </div>
+  </nav>
 
-      <!-- Rechts: Aktuelle Seite oder weitere Links -->
-      <div class="nav-right">
-        <!-- Wenn du weitere Menüpunkte willst, hier hinzufügen -->
-        <a href="#">Kontakt</a>
-      </div>
-    </nav>
+  <!-- MAIN (Kontaktbox über die ganze Seite) -->
+  <div class="main-content">
+    <div class="contact-box">
+      <h1>Kontakt</h1>
+      <!-- Beispiel: mailto-Aktion (öffnet Mailprogramm des Nutzers) -->
+      <form action="mailto:info@deinedomain.de" method="POST" enctype="text/plain">
+        <!-- Name & Firma nebeneinander -->
+        <div class="form-row">
+          <div>
+            <label for="name">Name *</label>
+            <input type="text" id="name" name="name" placeholder="Dein Name" required>
+          </div>
+          <div>
+            <label for="firma">Firma</label>
+            <input type="text" id="firma" name="firma" placeholder="Deine Firma (optional)">
+          </div>
+        </div>
 
-    <!-- HAUPTINHALT -->
-    <div class="main-content">
-      <div class="contact-box">
-        <h1>Kontaktiere uns</h1>
-        <!-- Einfaches Kontaktformular mit mailto -->
-        <form action="mailto:info@grabenstein-sales.de" method="POST" enctype="text/plain">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" placeholder="Dein Name" required>
-
-          <label for="email">E-Mail</label>
+        <!-- E-Mail -->
+        <div>
+          <label for="email">E-Mail *</label>
           <input type="email" id="email" name="email" placeholder="Deine E-Mail-Adresse" required>
+        </div>
 
-          <label for="message">Nachricht</label>
+        <!-- Nachricht -->
+        <div>
+          <label for="message">Nachricht *</label>
           <textarea id="message" name="message" placeholder="Deine Nachricht..." required></textarea>
+        </div>
 
-          <button type="submit">Senden</button>
-        </form>
-      </div>
+        <!-- Absende-Button -->
+        <button type="submit">Absenden</button>
+      </form>
     </div>
   </div>
 
-  <!-- JavaScript (optional) -->
-  <script>
-    // Hier könntest du bei Bedarf eigenes JavaScript einfügen.
-  </script>
 </body>
 </html>
