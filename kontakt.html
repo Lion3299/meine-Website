@@ -4,6 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Kontakt – Grabenstein Sales</title>
+
+  <!-- EmailJS SDK einbinden (Async, damit es die Seite nicht blockiert) -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function() {
+      // Deine Public Key (User ID) von EmailJS
+      emailjs.init("LysyGFZwKaRolLZqO"); 
+      // Beispiel: emailjs.init("pTw3478ABCDZ_...");
+    })();
+  </script>
+
   <style>
     /* RESET */
     * {
@@ -16,7 +27,7 @@
       font-family: Arial, sans-serif;
       background-color: #fff;
       color: #333;
-      min-height: 100vh; /* Damit der Inhalt zumindest eine Bildschirmhöhe einnimmt */
+      min-height: 100vh; 
       display: flex;
       flex-direction: column;
     }
@@ -27,24 +38,22 @@
       align-items: center;
       justify-content: space-between;
       padding: 20px 40px;
-      border-bottom: 2px solid #2E8B57; /* Dünne Linie in Grün (oder Weiß, wenn du willst) */
-      background-color: #fff;           /* Weiße Navbar */
+      border-bottom: 2px solid #2E8B57; /* Dünne Linie in Grün */
+      background-color: #fff;
     }
 
-    /* Linke und rechte Bereiche der Navbar */
     .nav-left, .nav-right {
       display: flex;
       align-items: center;
       gap: 40px;
     }
 
-    /* Logo-Bild (falls du das gleiche wie auf der Startseite möchtest) */
     .logo-img {
       height: 80px;
       width: auto;
     }
 
-    /* Links in der Navbar */
+    /* Navbar-Links */
     .navbar a {
       color: #2E8B57; 
       text-decoration: none;
@@ -55,28 +64,25 @@
       color: #228b4d;
     }
 
-    /* Hauptbereich: füllt den restlichen Platz */
+    /* Hauptbereich */
     .main-content {
       flex: 1;
       display: flex;
-      justify-content: center; /* Horizontales Zentrieren */
-      align-items: center;     /* Vertikales Zentrieren */
-      padding: 40px;          /* Abstand zum Rand */
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
     }
 
-    /* Kontaktbox über die ganze Seite:
-       Da wir sie an sich 'über die gesamte Seite' wollen, 
-       nehmen wir hier nur etwas max-width weg, damit es nicht zu breit auf sehr großen Screens wird. */
+    /* Kontaktbox -> füllt quasi die ganze Seite */
     .contact-box {
       width: 100%;
-      max-width: 1200px; /* begrenzt die Breite auf sehr großen Bildschirmen */
+      max-width: 1200px;
       background-color: #f5f5f5;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
       padding: 40px;
     }
 
-    /* Überschrift in der Box */
     .contact-box h1 {
       font-size: 2rem;
       color: #2E8B57;
@@ -91,17 +97,15 @@
       gap: 20px;
     }
 
-    /* Eine Zeile für Name und Firma nebeneinander */
+    /* Name & Firma in einer Reihe */
     .form-row {
       display: flex;
       gap: 20px;
     }
-
-    /* Damit sich beide Felder in .form-row die Breite teilen */
     .form-row > div {
-      flex: 1; /* teilt den verfügbaren Platz gleichmäßig */
+      flex: 1;
       display: flex;
-      flex-direction: column; /* Label und Input untereinander */
+      flex-direction: column;
     }
 
     .contact-box label {
@@ -117,17 +121,15 @@
       border: 1px solid #ccc;
       border-radius: 5px;
       font-size: 1rem;
-      resize: vertical; 
+      resize: vertical;
     }
-
-    /* Textarea Mindesthöhe */
     .contact-box textarea {
       min-height: 120px;
     }
 
     /* Button */
     .contact-box button {
-      align-self: flex-start; /* Damit der Button linksbündig unter den Feldern bleibt */
+      align-self: flex-start;
       background-color: #2E8B57;
       color: #fff;
       font-weight: bold;
@@ -141,31 +143,48 @@
     .contact-box button:hover {
       background-color: #228b4d;
     }
+
+    /* Feedback-Nachricht nach dem Absenden */
+    .success-message, .error-message {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 5px;
+      display: none; /* Erst mal versteckt */
+    }
+    .success-message {
+      background-color: #d4edda; /* Hellgrün */
+      color: #155724;
+    }
+    .error-message {
+      background-color: #f8d7da; /* Hellrot */
+      color: #721c24;
+    }
+
   </style>
 </head>
 <body>
-  <!-- NAVBAR -->
+
+  <!-- NAVIGATION -->
   <nav class="navbar">
     <div class="nav-left">
-      <!-- Falls du dein Logo hier haben möchtest, Logo2.png -->
+      <!-- Logo -> Link zur Startseite -->
       <a href="startseite.html">
         <img src="logo2.png" alt="Grabenstein Sales Logo" class="logo-img">
       </a>
     </div>
-
-    <!-- Nur ein Link zur Startseite (keine Kontakt-Verlinkung) -->
+    <!-- Nur Link zur Startseite -->
     <div class="nav-right">
       <a href="startseite.html">Startseite</a>
     </div>
   </nav>
 
-  <!-- MAIN (Kontaktbox über die ganze Seite) -->
+  <!-- HAUPTINHALT -->
   <div class="main-content">
     <div class="contact-box">
       <h1>Kontakt</h1>
-      <!-- Beispiel: mailto-Aktion (öffnet Mailprogramm des Nutzers) -->
-      <form action="mailto:info@deinedomain.de" method="POST" enctype="text/plain">
-        <!-- Name & Firma nebeneinander -->
+      
+      <!-- Formular OHNE action, wir steuern das per JS (EmailJS) -->
+      <form id="contact-form">
         <div class="form-row">
           <div>
             <label for="name">Name *</label>
@@ -176,24 +195,71 @@
             <input type="text" id="firma" name="firma" placeholder="Deine Firma (optional)">
           </div>
         </div>
-
-        <!-- E-Mail -->
+        
         <div>
           <label for="email">E-Mail *</label>
           <input type="email" id="email" name="email" placeholder="Deine E-Mail-Adresse" required>
         </div>
-
-        <!-- Nachricht -->
+        
         <div>
           <label for="message">Nachricht *</label>
           <textarea id="message" name="message" placeholder="Deine Nachricht..." required></textarea>
         </div>
-
+        
         <!-- Absende-Button -->
         <button type="submit">Absenden</button>
+
+        <!-- Erfolg- oder Fehlermeldung (dynamisch per JavaScript) -->
+        <div class="success-message" id="successMsg">
+          Danke! Deine Nachricht wurde erfolgreich gesendet.
+        </div>
+        <div class="error-message" id="errorMsg">
+          Leider gab es ein Problem beim Senden deiner Nachricht. Versuche es bitte noch einmal.
+        </div>
       </form>
     </div>
   </div>
 
+  <script>
+    // Wir holen uns das Formular und hängen eine Submit-Action dran
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); // Verhindert das normale Abschicken
+
+      // Variablen für die Eingabewerte
+      const name = document.getElementById('name').value;
+      const firma = document.getElementById('firma').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+
+      // E-Mail-Objekt für EmailJS
+      const templateParams = {
+        from_name: name,
+        company_name: firma,
+        reply_to: email,
+        message: message
+      };
+
+      // EmailJS sendet die Daten
+      emailjs.send(
+        "service-fxkf4yj",     // <-- DEINE SERVICE ID hier
+        "template-7ozivz4",    // <-- DEINE TEMPLATE ID hier
+        templateParams
+      )
+      .then(function(response) {
+        console.log('SUCCESS!', response.status, response.text);
+        // Erfolg anzeigen
+        document.getElementById('successMsg').style.display = 'block';
+        document.getElementById('errorMsg').style.display = 'none';
+        // Formular leeren
+        form.reset();
+      }, function(error) {
+        console.log('FAILED...', error);
+        // Fehlermeldung anzeigen
+        document.getElementById('successMsg').style.display = 'none';
+        document.getElementById('errorMsg').style.display = 'block';
+      });
+    });
+  </script>
 </body>
 </html>
