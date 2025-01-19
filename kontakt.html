@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt – Grabenstein Sales</title>
+  <style>
+    /* Reset: Grundlegende Stile zurücksetzen */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    /* Container für die gesamte Seite (Full Screen Hintergrund) */
+    .container {
+      position: relative;
+      height: 100vh; /* Volle Browser-Höhe */
+      background: url('background.jpg') no-repeat center center / cover;
+      display: flex;
+      flex-direction: column; /* Navigation oben, Inhalt darunter */
+    }
+
+    /* Overlay, um den Hintergrund etwas abzudunkeln */
+    .container::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
+
+    /* NAVIGATION oben */
+    .navbar {
+      position: relative;
+      z-index: 2; /* Über dem Overlay */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      background: transparent;
+      border-bottom: 2px solid #fff; /* dünne weiße Linie */
+    }
+
+    /* Navigation: links und rechts */
+    .nav-left, .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px; /* Abstand zwischen den Links */
+    }
+
+    /* Links in der Navigation: weißer Text, fett */
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    .navbar a:hover {
+      color: #ccc; /* Hover-Effekt */
+    }
+
+    /* HAUPTBEREICH – Kontaktformular zentrieren */
+    .main-content {
+      position: relative;
+      z-index: 2;  /* über dem Overlay */
+      flex: 1;     /* füllt den restlichen Platz */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px; /* Innenabstand für kleinere Bildschirme */
+    }
+
+    /* Kontaktbox */
+    .contact-box {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      max-width: 500px;
+      width: 100%;
+      padding: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .contact-box h1 {
+      font-size: 1.8rem;
+      color: #2E8B57;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    /* Formular-Stile */
+    .contact-box form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-box label {
+      font-weight: bold;
+    }
+
+    .contact-box input[type="text"],
+    .contact-box input[type="email"],
+    .contact-box textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      resize: vertical; /* Textarea kann in der Höhe vergrößert werden */
+    }
+
+    .contact-box textarea {
+      min-height: 100px;
+    }
+
+    /* Senden-Button */
+    .contact-box button {
+      background-color: #2E8B57;
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      padding: 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+    .contact-box button:hover {
+      background-color: #228b4d;
+    }
+
+    /* FOOTER optional, hier weggelassen – falls du einen brauchst, kannst du ihn hinzufügen. */
+  </style>
+</head>
+<body>
+
+  <!-- Container mit Hintergrund + Overlay -->
+  <div class="container">
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+      <!-- Links: z.B. Startseite -->
+      <div class="nav-left">
+        <!-- Passe den Link zur Startseite an -->
+        <a href="startseite.html">Startseite</a>
+      </div>
+
+      <!-- Rechts: Aktuelle Seite oder weitere Links -->
+      <div class="nav-right">
+        <!-- Wenn du weitere Menüpunkte willst, hier hinzufügen -->
+        <a href="#">Kontakt</a>
+      </div>
+    </nav>
+
+    <!-- HAUPTINHALT -->
+    <div class="main-content">
+      <div class="contact-box">
+        <h1>Kontaktiere uns</h1>
+        <!-- Einfaches Kontaktformular mit mailto -->
+        <form action="mailto:info@grabenstein-sales.de" method="POST" enctype="text/plain">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Dein Name" required>
+
+          <label for="email">E-Mail</label>
+          <input type="email" id="email" name="email" placeholder="Deine E-Mail-Adresse" required>
+
+          <label for="message">Nachricht</label>
+          <textarea id="message" name="message" placeholder="Deine Nachricht..." required></textarea>
+
+          <button type="submit">Senden</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript (optional) -->
+  <script>
+    // Hier könntest du bei Bedarf eigenes JavaScript einfügen.
+  </script>
+</body>
+</html>
