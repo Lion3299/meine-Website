@@ -79,16 +79,21 @@
       width: 80%;
       max-width: 1200px;
       justify-content: center;
+      flex-wrap: wrap;
     }
     
     .angebot-item {
       flex: 1;
-      padding: 40px;
+      padding: 60px 40px; /* Erhöhtes vertikales Padding für längere Felder */
       border-radius: 10px;
       text-align: center;
       cursor: pointer;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       position: relative;
+      min-height: 400px; /* Mindesthöhe für längere Felder */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     
     .angebot-item:hover {
@@ -97,11 +102,11 @@
     }
     
     .angebot-item.blau {
-      background-color: #2E8B57; /* Blau */
+      background-color: #1E90FF; /* Klare Blauton */
     }
     
     .angebot-item.gruen {
-      background-color: #228B22; /* Grün */
+      background-color: #228B22; /* Grün bleibt unverändert */
     }
     
     .angebot-item h2 {
@@ -112,6 +117,7 @@
     .angebot-item p {
       margin-bottom: 30px;
       font-size: 1.2em;
+      flex-grow: 1;
     }
     
     .cta-button {
@@ -124,22 +130,12 @@
       cursor: pointer;
       transition: background-color 0.3s ease, color 0.3s ease;
       font-size: 1em;
+      align-self: center;
     }
     
     .cta-button:hover {
       background-color: #2E8B57;
       color: #fff;
-    }
-    
-    /* FOOTER */
-    footer {
-      background-color: #2E8B57;
-      color: #fff;
-      text-align: center;
-      padding: 20px 0;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
     }
     
     /* MODAL STYLES */
@@ -205,6 +201,7 @@
       
       .angebot-item {
         width: 100%;
+        min-height: 300px; /* Anpassung für kleinere Bildschirme */
       }
       
       .modal-content {
@@ -239,14 +236,14 @@
       <!-- Angebot 1 -->
       <div class="angebot-item blau" onclick="openModal('modal-angebot1')">
         <h2>Angebot 1</h2>
-        <p>Kurze Beschreibung des ersten Angebots.</p>
+        <p>Entdecken Sie unser erstes Angebot, das speziell darauf ausgelegt ist, Ihre Geschäftsprozesse zu optimieren und Ihren Umsatz zu steigern.</p>
         <button class="cta-button">Mehr erfahren</button>
       </div>
       
       <!-- Angebot 2 -->
       <div class="angebot-item gruen" onclick="openModal('modal-angebot2')">
         <h2>Angebot 2</h2>
-        <p>Kurze Beschreibung des zweiten Angebots.</p>
+        <p>Unser zweites Angebot bietet Ihnen umfassende Lösungen für Ihre Marketingbedürfnisse, um Ihre Reichweite effektiv zu erhöhen.</p>
         <button class="cta-button">Mehr erfahren</button>
       </div>
     </div>
@@ -257,7 +254,12 @@
     <div class="modal-content">
       <span class="close" onclick="closeModal('modal-angebot1')">&times;</span>
       <h2>Angebot 1 Details</h2>
-      <p>Hier findest du eine ausführliche Beschreibung des ersten Angebots. Du kannst hier alle relevanten Informationen hinzufügen, die dein Kunde wissen muss.</p>
+      <p>Hier findest du eine ausführliche Beschreibung des ersten Angebots. Dieses Angebot umfasst:</p>
+      <ul>
+        <li>Leistungsbeschreibung 1</li>
+        <li>Leistungsbeschreibung 2</li>
+        <li>Leistungsbeschreibung 3</li>
+      </ul>
       <button class="cta-button" onclick="location.href='kontakt.html'">Angebot anfordern</button>
     </div>
   </div>
@@ -267,16 +269,15 @@
     <div class="modal-content">
       <span class="close" onclick="closeModal('modal-angebot2')">&times;</span>
       <h2>Angebot 2 Details</h2>
-      <p>Hier findest du eine ausführliche Beschreibung des zweiten Angebots. Du kannst hier alle relevanten Informationen hinzufügen, die dein Kunde wissen muss.</p>
+      <p>Hier findest du eine ausführliche Beschreibung des zweiten Angebots. Dieses Angebot umfasst:</p>
+      <ul>
+        <li>Leistungsbeschreibung A</li>
+        <li>Leistungsbeschreibung B</li>
+        <li>Leistungsbeschreibung C</li>
+      </ul>
       <button class="cta-button" onclick="location.href='kontakt.html'">Angebot anfordern</button>
     </div>
   </div>
-  
-  <!-- FOOTER -->
-  <footer>
-    <p>&copy; 2025 Grabenstein Sales. Alle Rechte vorbehalten.</p>
-    <p>Kontakt: grabenstein.sales@outlook.com | +49 123 456789</p>
-  </footer>
   
   <!-- JAVASCRIPT FÜR MODALS -->
   <script>
@@ -303,3 +304,4 @@
   
 </body>
 </html>
+ 
