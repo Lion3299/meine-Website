@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Angebote – Grabenstein Sales</title>
+  
+  <style>
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
+      color: #fff;
+    }
+    
+    /* NAVIGATION */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: rgba(0, 0, 0, 0.5); /* Halbtransparente Hintergrund */
+      z-index: 1000;
+    }
+    
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      margin-left: 20px;
+      transition: color 0.3s ease;
+    }
+    
+    .navbar a:hover {
+      color: #2E8B57;
+    }
+    
+    .logo-img {
+      height: 60px;
+    }
+    
+    /* HAUPTINHALT */
+    .angebot-sektion {
+      position: relative;
+      height: 100vh;
+      background-image: url('background.jpg'); /* Ersetze mit deinem Bildpfad */
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    
+    .background-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5); /* Verdunkelung */
+      z-index: 1;
+    }
+    
+    .angebote-container {
+      position: relative;
+      display: flex;
+      gap: 40px;
+      z-index: 2;
+      width: 80%;
+      max-width: 1200px;
+      justify-content: center;
+    }
+    
+    .angebot-item {
+      flex: 1;
+      padding: 40px;
+      border-radius: 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+    
+    .angebot-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+    
+    .angebot-item.blau {
+      background-color: #2E8B57; /* Blau */
+    }
+    
+    .angebot-item.gruen {
+      background-color: #228B22; /* Grün */
+    }
+    
+    .angebot-item h2 {
+      margin-bottom: 20px;
+      font-size: 2em;
+    }
+    
+    .angebot-item p {
+      margin-bottom: 30px;
+      font-size: 1.2em;
+    }
+    
+    .cta-button {
+      background-color: #fff;
+      color: #2E8B57;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      font-size: 1em;
+    }
+    
+    .cta-button:hover {
+      background-color: #2E8B57;
+      color: #fff;
+    }
+    
+    /* FOOTER */
+    footer {
+      background-color: #2E8B57;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    
+    /* MODAL STYLES */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; 
+      z-index: 1001; /* Über dem Overlay */
+      left: 0;
+      top: 0;
+      width: 100%; 
+      height: 100%; 
+      overflow: auto; 
+      background-color: rgba(0,0,0,0.7); /* Schwarze Transparenz */
+      padding-top: 60px;
+    }
+    
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto; /* Zentriert das Modal */
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%; 
+      max-width: 600px;
+      border-radius: 10px;
+      position: relative;
+      color: #333;
+      font-family: Arial, sans-serif;
+    }
+    
+    .close {
+      color: #aaa;
+      position: absolute;
+      top: 10px;
+      right: 25px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    
+    .modal-content h2 {
+      margin-bottom: 15px;
+      color: #2E8B57;
+    }
+    
+    .modal-content p {
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 768px) {
+      .angebote-container {
+        flex-direction: column;
+        gap: 20px;
+      }
+      
+      .angebot-item {
+        width: 100%;
+      }
+      
+      .modal-content {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- NAVIGATION -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <!-- Logo -> Link zur Startseite -->
+      <a href="startseite.html">
+        <img src="logo2.png" alt="Grabenstein Sales Logo" class="logo-img">
+      </a>
+    </div>
+    <!-- Nur Link zur Startseite -->
+    <div class="nav-right">
+      <a href="startseite.html">Startseite</a>
+    </div>
+  </nav>
+  
+  <!-- HAUPTINHALT -->
+  <div class="angebot-sektion">
+    <!-- Hintergrundverdunkelung -->
+    <div class="background-overlay"></div>
+    
+    <!-- Angebotscontainer -->
+    <div class="angebote-container">
+      <!-- Angebot 1 -->
+      <div class="angebot-item blau" onclick="openModal('modal-angebot1')">
+        <h2>Angebot 1</h2>
+        <p>Kurze Beschreibung des ersten Angebots.</p>
+        <button class="cta-button">Mehr erfahren</button>
+      </div>
+      
+      <!-- Angebot 2 -->
+      <div class="angebot-item gruen" onclick="openModal('modal-angebot2')">
+        <h2>Angebot 2</h2>
+        <p>Kurze Beschreibung des zweiten Angebots.</p>
+        <button class="cta-button">Mehr erfahren</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- MODAL FÜR ANGEBOT 1 -->
+  <div id="modal-angebot1" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal-angebot1')">&times;</span>
+      <h2>Angebot 1 Details</h2>
+      <p>Hier findest du eine ausführliche Beschreibung des ersten Angebots. Du kannst hier alle relevanten Informationen hinzufügen, die dein Kunde wissen muss.</p>
+      <button class="cta-button" onclick="location.href='kontakt.html'">Angebot anfordern</button>
+    </div>
+  </div>
+  
+  <!-- MODAL FÜR ANGEBOT 2 -->
+  <div id="modal-angebot2" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal-angebot2')">&times;</span>
+      <h2>Angebot 2 Details</h2>
+      <p>Hier findest du eine ausführliche Beschreibung des zweiten Angebots. Du kannst hier alle relevanten Informationen hinzufügen, die dein Kunde wissen muss.</p>
+      <button class="cta-button" onclick="location.href='kontakt.html'">Angebot anfordern</button>
+    </div>
+  </div>
+  
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Grabenstein Sales. Alle Rechte vorbehalten.</p>
+    <p>Kontakt: grabenstein.sales@outlook.com | +49 123 456789</p>
+  </footer>
+  
+  <!-- JAVASCRIPT FÜR MODALS -->
+  <script>
+    // Funktion zum Öffnen des Modals
+    function openModal(modalId) {
+      document.getElementById(modalId).style.display = "block";
+    }
+
+    // Funktion zum Schließen des Modals
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = "none";
+    }
+
+    // Schließen des Modals beim Klick außerhalb des Modal-Inhalts
+    window.onclick = function(event) {
+      const modals = document.querySelectorAll('.modal');
+      modals.forEach(modal => {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      });
+    }
+  </script>
+  
+</body>
+</html>
