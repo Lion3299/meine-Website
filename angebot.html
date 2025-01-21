@@ -101,6 +101,10 @@
     /* Flip-Klasse zum Drehen */
     .angebot-item.flipped .inner {
       transform: rotateY(180deg);
+    }
+    
+    /* Größe beim Drehen */
+    .angebot-item.flipped {
       min-height: 700px; /* Erhöhte Mindesthöhe beim Drehen */
     }
     
@@ -109,7 +113,7 @@
       width: 100%;
       height: 100%;
       text-align: center;
-      transition: transform 0.6s, min-height 0.6s;
+      transition: transform 0.6s;
       transform-style: preserve-3d;
     }
     
@@ -193,11 +197,7 @@
         min-height: 400px; /* Angepasste Mindesthöhe für mobile Geräte */
       }
       
-      .inner {
-        transition: transform 0.6s, min-height 0.6s;
-      }
-      
-      .angebot-item.flipped .inner {
+      .angebot-item.flipped {
         min-height: 600px; /* Erhöhte Mindesthöhe beim Drehen für mobile Geräte */
       }
       
@@ -282,30 +282,14 @@
   <script>
     // Funktion zum Öffnen und Drehen des Angebotsfelds
     document.querySelectorAll('.angebot-item').forEach(item => {
-      item.addEventListener('click', () => {
+      item.addEventListener('click', (e) => {
+        // Verhindere, dass der Klick auf den Button das Flippen auslöst
+        if (e.target.classList.contains('cta-button')) {
+          return;
+        }
         item.classList.toggle('flipped');
       });
     });
-    
-    // Optional: Falls du weiterhin Modals verwenden möchtest, kannst du den vorhandenen JavaScript-Code beibehalten
-    /*
-    function openModal(modalId) {
-      document.getElementById(modalId).style.display = "block";
-    }
-
-    function closeModal(modalId) {
-      document.getElementById(modalId).style.display = "none";
-    }
-
-    window.onclick = function(event) {
-      const modals = document.querySelectorAll('.modal');
-      modals.forEach(modal => {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      });
-    }
-    */
   </script>
   
 </body>
