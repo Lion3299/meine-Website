@@ -90,14 +90,16 @@
       perspective: 1000px; /* Perspektive für den 3D-Effekt */
       width: 45%; /* Feste Breite */
       flex: 0 1 45%; /* Kein Flex-Wachstum, erlaubtes Schrumpfen, Basisbreite 45% */
-      min-height: 500px; /* Mindesthöhe für die Vorderseite */
+      height: 500px; /* Feste Höhe für die Vorderseite */
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: min-height 0.6s;
+      transition: height 0.6s;
       position: relative;
       margin-bottom: 40px; /* Abstand nach unten */
+      align-self: flex-start;
+      z-index: 1; /* Standard z-index */
     }
     
     /* Flip-Klasse zum Drehen */
@@ -107,7 +109,8 @@
     
     /* Größe beim Drehen */
     .angebot-item.flipped {
-      min-height: 700px; /* Erhöhte Mindesthöhe beim Drehen */
+      height: 700px; /* Erhöhte feste Höhe beim Drehen */
+      z-index: 2; /* Höhere z-index, damit es über anderen bleibt */
     }
     
     .inner {
@@ -143,7 +146,6 @@
     .back {
       transform: rotateY(180deg);
       padding: 80px 40px; /* Angepasstes vertikales Padding für die Rückseite */
-      min-height: 700px; /* Erhöhte Mindesthöhe auf der Rückseite */
       background-color: inherit; /* Gleiche Farbe wie die Vorderseite */
     }
     
@@ -196,11 +198,11 @@
       .angebot-item {
         width: 100%;
         flex: 0 1 100%; /* Feste Breite für mobile Geräte */
-        min-height: 400px; /* Angepasste Mindesthöhe für mobile Geräte */
+        height: 400px; /* Angepasste feste Höhe für mobile Geräte */
       }
       
       .angebot-item.flipped {
-        min-height: 600px; /* Erhöhte Mindesthöhe beim Drehen für mobile Geräte */
+        height: 600px; /* Erhöhte feste Höhe beim Drehen für mobile Geräte */
       }
       
       .front, .back {
@@ -289,7 +291,7 @@
         if (e.target.classList.contains('cta-button')) {
           return;
         }
-        // Entferne die 'flipped' Klasse von allen Angebotsfeldern
+        // Entferne die 'flipped' Klasse von allen Angebotsfeldern, außer dem geklickten
         document.querySelectorAll('.angebot-item.flipped').forEach(flippedItem => {
           if (flippedItem !== item) {
             flippedItem.classList.remove('flipped');
