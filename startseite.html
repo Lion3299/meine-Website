@@ -101,24 +101,11 @@
     }
 
     .center-content h2 {
-      position: relative; /* Für das Pseudo-Element */
       font-size: 3rem;
-      font-weight: 300; /* Dünnere Schriftstärke */
+      font-weight: bold;
       color: #fff;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-      margin-bottom: 5px;
-    }
-
-    /* Linie unter der Headline (nur auf der Startseite) */
-    .startseite .center-content h2::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: -2px; /* Abstand zwischen Text und Linie */
-      transform: translateX(-50%);
-      width: 50%; /* Breite der Linie */
-      height: 1px; /* Noch dünnere Linie */
-      background-color: #fff; /* Farbe der Linie */
+      margin-bottom: 15px;
     }
 
     .center-content p {
@@ -162,7 +149,7 @@
     }
   </style>
 </head>
-<body class="startseite">
+<body>
 
   <!-- Container mit Hintergrundbild, Overlay und Navbar -->
   <div class="container">
@@ -225,5 +212,5 @@
     // Falls du eigenes JavaScript brauchst, kannst du es hier einfügen.
   </script>
 </body>
-</html>
+</html>                              
    
