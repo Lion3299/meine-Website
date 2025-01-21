@@ -82,18 +82,20 @@
       max-width: 1200px;
       justify-content: center;
       flex-wrap: wrap;
+      align-items: flex-start; /* Ermöglicht unterschiedliche Höhen */
     }
     
     /* Flip-Card-Stile */
     .angebot-item {
       perspective: 1000px; /* Perspektive für den 3D-Effekt */
-      flex: 1;
+      width: 45%; /* Feste Breite */
+      flex: 0 1 45%; /* Kein Flex-Wachstum, erlaubtes Schrumpfen, Basisbreite 45% */
       min-height: 500px; /* Mindesthöhe für die Vorderseite */
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: transform 0.6s, min-height 0.6s;
+      transition: min-height 0.6s;
       position: relative;
       margin-bottom: 40px; /* Abstand nach unten */
     }
@@ -130,7 +132,6 @@
       align-items: center;
       padding: 60px 40px; /* Angepasstes vertikales Padding für die Vorderseite */
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      transition: padding 0.6s, min-height 0.6s;
       overflow: hidden;
     }
     
@@ -194,6 +195,7 @@
       
       .angebot-item {
         width: 100%;
+        flex: 0 1 100%; /* Feste Breite für mobile Geräte */
         min-height: 400px; /* Angepasste Mindesthöhe für mobile Geräte */
       }
       
@@ -287,6 +289,13 @@
         if (e.target.classList.contains('cta-button')) {
           return;
         }
+        // Entferne die 'flipped' Klasse von allen Angebotsfeldern
+        document.querySelectorAll('.angebot-item.flipped').forEach(flippedItem => {
+          if (flippedItem !== item) {
+            flippedItem.classList.remove('flipped');
+          }
+        });
+        // Toggle die 'flipped' Klasse nur auf dem geklickten Angebotsfeld
         item.classList.toggle('flipped');
       });
     });
