@@ -58,7 +58,7 @@
       background-position: center;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start; /* Ermöglicht unterschiedliche Höhen */
       overflow: hidden;
       padding-top: 80px; /* Platz für die fixe Navbar */
     }
@@ -98,7 +98,7 @@
       transition: height 0.6s;
       position: relative;
       margin-bottom: 40px; /* Abstand nach unten */
-      align-self: flex-start;
+      align-self: flex-start; /* Verhindert, dass die Höhe anderer Elemente beeinflusst wird */
       z-index: 1; /* Standard z-index */
     }
     
@@ -291,12 +291,6 @@
         if (e.target.classList.contains('cta-button')) {
           return;
         }
-        // Entferne die 'flipped' Klasse von allen Angebotsfeldern, außer dem geklickten
-        document.querySelectorAll('.angebot-item.flipped').forEach(flippedItem => {
-          if (flippedItem !== item) {
-            flippedItem.classList.remove('flipped');
-          }
-        });
         // Toggle die 'flipped' Klasse nur auf dem geklickten Angebotsfeld
         item.classList.toggle('flipped');
       });
