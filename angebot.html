@@ -17,6 +17,7 @@
       height: 100%;
       font-family: Arial, sans-serif;
       color: #fff;
+      background-color: #000; /* Fallback Hintergrundfarbe */
     }
     
     /* NAVIGATION */
@@ -82,31 +83,68 @@
       flex-wrap: wrap;
     }
     
+    /* Flip-Card-Stile */
     .angebot-item {
+      perspective: 1000px; /* Perspektive für den 3D-Effekt */
       flex: 1;
-      padding: 80px 40px; /* Erhöhtes vertikales Padding für längere Felder */
-      border-radius: 10px;
-      text-align: center;
+      min-height: 600px; /* Mindesthöhe für längere Felder */
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.6s;
+    }
+    
+    /* Flip-Klasse zum Drehen */
+    .angebot-item.flipped .inner {
+      transform: rotateY(180deg);
+      min-height: 700px; /* Erhöhte Mindesthöhe beim Drehen */
+    }
+    
+    .inner {
       position: relative;
-      min-height: 500px; /* Mindesthöhe für längere Felder */
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+    
+    /* Vorderseite der Karte */
+    .front, .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 10px;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
+      padding: 80px 40px; /* Erhöhtes vertikales Padding */
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: padding 0.6s, min-height 0.6s;
     }
     
-    .angebot-item:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    .front {
+      background-color: #1E90FF; /* Klarer Blauton */
     }
     
-    .angebot-item.blau {
-      background-color: #1E90FF; /* Klare Blauton */
+    .back {
+      background-color: #228B22; /* Grün */
+      transform: rotateY(180deg);
+      padding: 100px 40px; /* Mehr Padding auf der Rückseite */
+      min-height: 700px; /* Erhöhte Mindesthöhe auf der Rückseite */
     }
     
-    .angebot-item.gruen {
-      background-color: #228B22; /* Grün bleibt unverändert */
+    .angebot-item.flipped .back {
+      padding: 120px 40px; /* Weiter erhöhte Padding beim Drehen */
+      min-height: 800px; /* Weiter erhöhte Mindesthöhe beim Drehen */
+    }
+    
+    .angebot-item.flipped .front {
+      padding: 60px 40px; /* Reduziertes Padding auf der Vorderseite beim Drehen */
+      min-height: 500px; /* Reduzierte Mindesthöhe auf der Vorderseite beim Drehen */
     }
     
     .angebot-item h2 {
@@ -115,7 +153,6 @@
     }
     
     .angebot-item p {
-      margin-bottom: 30px;
       font-size: 1.2em;
       flex-grow: 1;
     }
@@ -138,7 +175,7 @@
       color: #fff;
     }
     
-    /* MODAL STYLES */
+    /* MODAL STYLES (Optional, falls weiterhin verwendet) */
     .modal {
       display: none; /* Hidden by default */
       position: fixed; 
@@ -201,7 +238,7 @@
       
       .angebot-item {
         width: 100%;
-        min-height: 300px; /* Anpassung für kleinere Bildschirme */
+        min-height: 400px; /* Angepasste Mindesthöhe für mobile Geräte */
       }
       
       .modal-content {
@@ -234,54 +271,61 @@
     <!-- Angebotscontainer -->
     <div class="angebote-container">
       <!-- Angebot 1 -->
-      <div class="angebot-item blau" onclick="openModal('modal-angebot1')">
-        <h2>Angebot 1</h2>
-        <p>Entdecken Sie unser erstes Angebot, das speziell darauf ausgelegt ist, Ihre Geschäftsprozesse zu optimieren und Ihren Umsatz zu steigern.</p>
-        <button class="cta-button">Mehr erfahren</button>
+      <div class="angebot-item blau">
+        <div class="inner">
+          <div class="front">
+            <h2>Angebot 1</h2>
+            <p>Entdecken Sie unser erstes Angebot, das speziell darauf ausgelegt ist, Ihre Geschäftsprozesse zu optimieren und Ihren Umsatz zu steigern.</p>
+            <button class="cta-button">Mehr erfahren</button>
+          </div>
+          <div class="back">
+            <h2>Angebot 1 Details</h2>
+            <p>Dieses Angebot umfasst:</p>
+            <ul>
+              <li>Leistungsbeschreibung 1</li>
+              <li>Leistungsbeschreibung 2</li>
+              <li>Leistungsbeschreibung 3</li>
+            </ul>
+            <button class="cta-button" onclick="location.href='kontakt.html'">Angebot anfordern</button>
+          </div>
+        </div>
       </div>
       
       <!-- Angebot 2 -->
-      <div class="angebot-item gruen" onclick="openModal('modal-angebot2')">
-        <h2>Angebot 2</h2>
-        <p>Unser zweites Angebot bietet Ihnen umfassende Lösungen für Ihre Marketingbedürfnisse, um Ihre Reichweite effektiv zu erhöhen.</p>
-        <button class="cta-button">Mehr erfahren</button>
+      <div class="angebot-item gruen">
+        <div class="inner">
+          <div class="front">
+            <h2>Angebot 2</h2>
+            <p>Unser zweites Angebot bietet Ihnen umfassende Lösungen für Ihre Marketingbedürfnisse, um Ihre Reichweite effektiv zu erhöhen.</p>
+            <button class="cta-button">Mehr erfahren</button>
+          </div>
+          <div class="back">
+            <h2>Angebot 2 Details</h2>
+            <p>Dieses Angebot umfasst:</p>
+            <ul>
+              <li>Leistungsbeschreibung A</li>
+              <li>Leistungsbeschreibung B</li>
+              <li>Leistungsbeschreibung C</li>
+            </ul>
+            <button class="cta-button" onclick="location.href='kontakt.html'">Angebot anfordern</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
   
-  <!-- MODAL FÜR ANGEBOT 1 -->
-  <div id="modal-angebot1" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('modal-angebot1')">&times;</span>
-      <h2>Angebot 1 Details</h2>
-      <p>Hier findest du eine ausführliche Beschreibung des ersten Angebots. Dieses Angebot umfasst:</p>
-      <ul>
-        <li>Leistungsbeschreibung 1</li>
-        <li>Leistungsbeschreibung 2</li>
-        <li>Leistungsbeschreibung 3</li>
-      </ul>
-      <button class="cta-button" onclick="location.href='kontakt.html'">Angebot anfordern</button>
-    </div>
-  </div>
-  
-  <!-- MODAL FÜR ANGEBOT 2 -->
-  <div id="modal-angebot2" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('modal-angebot2')">&times;</span>
-      <h2>Angebot 2 Details</h2>
-      <p>Hier findest du eine ausführliche Beschreibung des zweiten Angebots. Dieses Angebot umfasst:</p>
-      <ul>
-        <li>Leistungsbeschreibung A</li>
-        <li>Leistungsbeschreibung B</li>
-        <li>Leistungsbeschreibung C</li>
-      </ul>
-      <button class="cta-button" onclick="location.href='kontakt.html'">Angebot anfordern</button>
-    </div>
-  </div>
-  
-  <!-- JAVASCRIPT FÜR MODALS -->
+  <!-- JAVASCRIPT FÜR FLIP-EFFEKT -->
   <script>
-    // Funktion zum Öffnen des Modals
+    // Funktion zum Öffnen und Drehen des Angebotsfelds
+    document.querySelectorAll('.angebot-item').forEach(item => {
+      item.addEventListener('click', () => {
+        item.classList.toggle('flipped');
+      });
+    });
+    
+    // Optional: Falls du weiterhin Modals verwenden möchtest, kannst du den vorhandenen JavaScript-Code beibehalten
+    // Funktion zum Öffnen des Modals (nicht mehr benötigt, wenn du den Flip-Effekt verwendest)
+    /*
     function openModal(modalId) {
       document.getElementById(modalId).style.display = "block";
     }
@@ -300,6 +344,7 @@
         }
       });
     }
+    */
   </script>
   
 </body>
