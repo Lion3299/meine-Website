@@ -60,6 +60,7 @@
       justify-content: center;
       align-items: center;
       overflow: hidden;
+      padding-top: 80px; /* Platz für die fixe Navbar */
     }
     
     .background-overlay {
@@ -87,12 +88,14 @@
     .angebot-item {
       perspective: 1000px; /* Perspektive für den 3D-Effekt */
       flex: 1;
-      min-height: 600px; /* Mindesthöhe für längere Felder */
+      min-height: 500px; /* Mindesthöhe für die Vorderseite */
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: transform 0.6s;
+      transition: transform 0.6s, min-height 0.6s;
+      position: relative;
+      margin-bottom: 40px; /* Abstand nach unten */
     }
     
     /* Flip-Klasse zum Drehen */
@@ -106,7 +109,7 @@
       width: 100%;
       height: 100%;
       text-align: center;
-      transition: transform 0.6s;
+      transition: transform 0.6s, min-height 0.6s;
       transform-style: preserve-3d;
     }
     
@@ -121,30 +124,33 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 80px 40px; /* Erhöhtes vertikales Padding */
+      padding: 60px 40px; /* Angepasstes vertikales Padding für die Vorderseite */
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
       transition: padding 0.6s, min-height 0.6s;
+      overflow: hidden;
     }
     
     .front {
+      /* Farbige Hintergründe werden über die Angebot-spezifischen Klassen gesteuert */
+    }
+    
+    /* Rückseite der Karte */
+    .back {
+      transform: rotateY(180deg);
+      padding: 80px 40px; /* Angepasstes vertikales Padding für die Rückseite */
+      min-height: 700px; /* Erhöhte Mindesthöhe auf der Rückseite */
+      background-color: inherit; /* Gleiche Farbe wie die Vorderseite */
+    }
+    
+    /* Spezifische Farben für Front und Back */
+    .angebot-item.blau .front,
+    .angebot-item.blau .back {
       background-color: #1E90FF; /* Klarer Blauton */
     }
     
-    .back {
+    .angebot-item.gruen .front,
+    .angebot-item.gruen .back {
       background-color: #228B22; /* Grün */
-      transform: rotateY(180deg);
-      padding: 100px 40px; /* Mehr Padding auf der Rückseite */
-      min-height: 700px; /* Erhöhte Mindesthöhe auf der Rückseite */
-    }
-    
-    .angebot-item.flipped .back {
-      padding: 120px 40px; /* Weiter erhöhte Padding beim Drehen */
-      min-height: 800px; /* Weiter erhöhte Mindesthöhe beim Drehen */
-    }
-    
-    .angebot-item.flipped .front {
-      padding: 60px 40px; /* Reduziertes Padding auf der Vorderseite beim Drehen */
-      min-height: 500px; /* Reduzierte Mindesthöhe auf der Vorderseite beim Drehen */
     }
     
     .angebot-item h2 {
@@ -175,60 +181,6 @@
       color: #fff;
     }
     
-    /* MODAL STYLES (Optional, falls weiterhin verwendet) */
-    .modal {
-      display: none; /* Hidden by default */
-      position: fixed; 
-      z-index: 1001; /* Über dem Overlay */
-      left: 0;
-      top: 0;
-      width: 100%; 
-      height: 100%; 
-      overflow: auto; 
-      background-color: rgba(0,0,0,0.7); /* Schwarze Transparenz */
-      padding-top: 60px;
-    }
-    
-    .modal-content {
-      background-color: #fefefe;
-      margin: 5% auto; /* Zentriert das Modal */
-      padding: 20px;
-      border: 1px solid #888;
-      width: 80%; 
-      max-width: 600px;
-      border-radius: 10px;
-      position: relative;
-      color: #333;
-      font-family: Arial, sans-serif;
-    }
-    
-    .close {
-      color: #aaa;
-      position: absolute;
-      top: 10px;
-      right: 25px;
-      font-size: 28px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    
-    .close:hover,
-    .close:focus {
-      color: #000;
-      text-decoration: none;
-      cursor: pointer;
-    }
-    
-    .modal-content h2 {
-      margin-bottom: 15px;
-      color: #2E8B57;
-    }
-    
-    .modal-content p {
-      margin-bottom: 20px;
-      line-height: 1.5;
-    }
-    
     /* RESPONSIVE DESIGN */
     @media (max-width: 768px) {
       .angebote-container {
@@ -241,8 +193,20 @@
         min-height: 400px; /* Angepasste Mindesthöhe für mobile Geräte */
       }
       
-      .modal-content {
-        width: 90%;
+      .inner {
+        transition: transform 0.6s, min-height 0.6s;
+      }
+      
+      .angebot-item.flipped .inner {
+        min-height: 600px; /* Erhöhte Mindesthöhe beim Drehen für mobile Geräte */
+      }
+      
+      .front, .back {
+        padding: 40px 20px; /* Angepasstes Padding für kleinere Bildschirme */
+      }
+      
+      .back {
+        padding: 60px 20px; /* Angepasstes Padding für die Rückseite */
       }
     }
   </style>
@@ -324,18 +288,15 @@
     });
     
     // Optional: Falls du weiterhin Modals verwenden möchtest, kannst du den vorhandenen JavaScript-Code beibehalten
-    // Funktion zum Öffnen des Modals (nicht mehr benötigt, wenn du den Flip-Effekt verwendest)
     /*
     function openModal(modalId) {
       document.getElementById(modalId).style.display = "block";
     }
 
-    // Funktion zum Schließen des Modals
     function closeModal(modalId) {
       document.getElementById(modalId).style.display = "none";
     }
 
-    // Schließen des Modals beim Klick außerhalb des Modal-Inhalts
     window.onclick = function(event) {
       const modals = document.querySelectorAll('.modal');
       modals.forEach(modal => {
