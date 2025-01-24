@@ -13,9 +13,10 @@
     }
 
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f4f8;
       color: #333;
+      line-height: 1.6;
     }
 
     /* NAVIGATION */
@@ -27,12 +28,11 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 40px; /* Reduziertes vertikales Padding */
-      background: rgba(0, 0, 0, 0.7); /* Halbtransparente Hintergrund */
-      border-bottom: 2px solid #fff; /* Dünne weiße Linie zur Abgrenzung */
+      padding: 15px 40px;
+      background: rgba(46, 139, 87, 0.9); /* Halbtransparenter Grünton */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
-    /* Linke, mittlere und rechte Bereiche in der Navbar */
     .nav-left,
     .nav-center,
     .nav-right {
@@ -41,20 +41,23 @@
     }
 
     .nav-left {
-      gap: 40px;
+      gap: 30px;
     }
 
     .nav-right {
-      gap: 40px;
+      gap: 30px;
     }
 
-    /* Logo-Bild */
     .logo-img {
-      height: 60px; /* Reduzierte Höhe */
+      height: 50px;
       width: auto;
+      transition: transform 0.3s ease;
     }
 
-    /* Schrift in der Navigation: Weiß */
+    .logo-img:hover {
+      transform: scale(1.1);
+    }
+
     .nav-left a,
     .nav-center h1,
     .nav-right a {
@@ -64,153 +67,158 @@
       transition: color 0.3s;
     }
 
-    /* Hover-Farbe in der Navigation: dezentes Hellgrau */
     .nav-left a:hover,
     .nav-right a:hover {
-      color: #ccc;
+      color: #d4af37; /* Goldfarbe beim Hover */
     }
 
     /* HERO-BEREICH */
     .hero-section {
-      background-color: #2E8B57;
+      background: url('hero-background.jpg') no-repeat center center/cover;
       color: #fff;
-      padding: 120px 20px 60px 20px; /* Platz für die fixe Navbar */
+      padding: 150px 20px 80px 20px; /* Platz für die fixe Navbar */
       text-align: center;
-      margin-top: 60px; /* Höhe der Navbar berücksichtigen */
+      position: relative;
+    }
+
+    .hero-section::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4); /* Dunkler Overlay */
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     .hero-section h2 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
+      font-size: 3rem;
+      margin-bottom: 20px;
+      animation: fadeInDown 1s ease-out;
     }
 
     .hero-section p {
       font-size: 1.2rem;
+      margin-bottom: 30px;
+      animation: fadeInUp 1s ease-out;
     }
 
-    /* UNSERE MISSION */
-    .mission {
+    .cta-button {
+      display: inline-block;
+      padding: 15px 30px;
+      background-color: #ffd700;
+      color: #333;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .cta-button:hover {
+      background-color: #e6c200;
+      transform: translateY(-3px);
+    }
+
+    /* ÜBER MICH BEREICH */
+    .about-section {
       padding: 60px 20px;
-      background-color: #f5f5f5;
-      text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
     }
 
-    .mission h2 {
+    .about-text {
+      flex: 1 1 400px;
+      max-width: 600px;
+      padding: 20px;
+      animation: fadeInLeft 1s ease-out;
+    }
+
+    .about-text h3 {
       font-size: 2rem;
       color: #2E8B57;
       margin-bottom: 20px;
     }
 
-    .mission p {
+    .about-text p {
       font-size: 1rem;
-      line-height: 1.6;
-      max-width: 800px;
-      margin: 0 auto;
+      margin-bottom: 20px;
     }
 
-    /* UNSER TEAM */
-    .team {
+    .about-photo {
+      flex: 1 1 300px;
+      max-width: 400px;
+      padding: 20px;
+      text-align: center;
+      animation: fadeInRight 1s ease-out;
+    }
+
+    .about-photo img {
+      width: 100%;
+      max-width: 250px;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .about-photo img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    /* UNSERE WERTE */
+    .werte-section {
       padding: 60px 20px;
-      background-color: #fff;
+      background-color: #f0f4f8;
       text-align: center;
     }
 
-    .team h2 {
+    .werte-section h2 {
       font-size: 2rem;
       color: #2E8B57;
       margin-bottom: 40px;
     }
 
-    .team-container {
+    .werte-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 40px;
+      gap: 30px;
     }
 
-    .team-member {
-      background-color: #f5f5f5;
+    .wert-item {
+      background-color: #fff;
       padding: 20px;
       border-radius: 10px;
       width: 200px;
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    .team-member:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    .wert-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     }
 
-    .team-member img {
-      width: 100%;
-      height: auto;
-      border-radius: 50%;
+    .wert-item h4 {
+      font-size: 1.5rem;
+      color: #2E8B57;
+      margin-bottom: 10px;
     }
 
-    .team-member h3 {
-      font-size: 1.2rem;
-      margin-top: 15px;
-    }
-
-    .team-member p {
+    .wert-item p {
       font-size: 1rem;
       color: #555;
-    }
-
-    /* UNSERE WERTE */
-    .werte {
-      padding: 60px 20px;
-      background-color: #f5f5f5;
-      text-align: center;
-    }
-
-    .werte h2 {
-      font-size: 2rem;
-      color: #2E8B57;
-      margin-bottom: 20px;
-    }
-
-    .werte ul {
-      list-style: none;
-      padding: 0;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .werte li {
-      font-size: 1rem;
-      margin: 10px 0;
-      position: relative;
-      padding-left: 30px;
-    }
-
-    .werte li::before {
-      content: "✔️";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: #2E8B57;
-    }
-
-    /* UNSERE GESCHICHTE */
-    .geschichte {
-      padding: 60px 20px;
-      background-color: #fff;
-      text-align: center;
-    }
-
-    .geschichte h2 {
-      font-size: 2rem;
-      color: #2E8B57;
-      margin-bottom: 20px;
-    }
-
-    .geschichte p {
-      font-size: 1rem;
-      line-height: 1.6;
-      max-width: 800px;
-      margin: 0 auto;
     }
 
     /* FOOTER */
@@ -225,23 +233,87 @@
       font-size: 1rem;
     }
 
+    /* ANIMATIONEN */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
     /* RESPONSIVES DESIGN */
     @media (max-width: 768px) {
-      .team-container {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+      }
+
+      .nav-left,
+      .nav-center,
+      .nav-right {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .hero-section {
+        padding: 100px 20px 60px 20px;
+      }
+
+      .about-section {
+        flex-direction: column;
+      }
+
+      .about-text,
+      .about-photo {
+        max-width: 100%;
+      }
+
+      .werte-container {
         flex-direction: column;
         align-items: center;
       }
 
-      .team-member {
+      .wert-item {
         width: 80%;
-      }
-
-      .nav-left, .nav-right {
-        gap: 20px;
-      }
-
-      .navbar {
-        padding: 10px 20px;
       }
     }
   </style>
@@ -250,7 +322,7 @@
 
   <!-- NAVIGATION -->
   <nav class="navbar">
-    <!-- Links: Logo + "Startseite" -->
+    <!-- Linke Seite: Logo + Startseite -->
     <div class="nav-left">
       <a href="startseite.html">
         <img src="logo2.png" alt="Grabenstein Sales Logo" class="logo-img">
@@ -258,12 +330,12 @@
       <a href="startseite.html">Startseite</a>
     </div>
 
-    <!-- Mitte: Grabenstein Sales -->
+    <!-- Mitte: Firmenname -->
     <div class="nav-center">
       <h1>Grabenstein Sales</h1>
     </div>
 
-    <!-- Rechts: Angebote + Kontakt -->
+    <!-- Rechte Seite: Angebote + Kontakt -->
     <div class="nav-right">
       <a href="angebot.html">Angebote</a>
       <a href="kontakt.html">Kontakt</a>
@@ -272,65 +344,60 @@
 
   <!-- HERO-BEREICH -->
   <div class="hero-section">
-    <h2>Über Uns</h2>
-    <p>Erfahre mehr über unser Unternehmen, unsere Werte und unser Team.</p>
+    <div class="hero-content">
+      <h2>Über Uns</h2>
+      <p>Erfahre mehr über unser Unternehmen, unsere Werte und unser Team.</p>
+      <a href="#about" class="cta-button">Mehr erfahren</a>
+    </div>
   </div>
 
-  <!-- UNSERE MISSION -->
-  <section class="mission">
-    <h2>Unsere Mission</h2>
-    <p>
-      Bei Grabenstein Sales streben wir danach, unseren Kunden erstklassige Vertriebsdienstleistungen zu bieten, die nachhaltiges Wachstum und Erfolg fördern. Unser Ziel ist es, innovative Lösungen zu entwickeln und langfristige Partnerschaften aufzubauen.
-    </p>
-  </section>
-
-  <!-- UNSER TEAM -->
-  <section class="team">
-    <h2>Unser Team</h2>
-    <div class="team-container">
-      <!-- Teammitglied 1 -->
-      <div class="team-member">
-        <img src="team1.jpg" alt="Max Mustermann">
-        <h3>Max Mustermann</h3>
-        <p>Geschäftsführer</p>
-      </div>
-      <!-- Teammitglied 2 -->
-      <div class="team-member">
-        <img src="team2.jpg" alt="Anna Beispiel">
-        <h3>Anna Beispiel</h3>
-        <p>Vertriebsleiterin</p>
-      </div>
-      <!-- Weitere Teammitglieder hinzufügen -->
-      <div class="team-member">
-        <img src="team3.jpg" alt="Peter Muster">
-        <h3>Peter Muster</h3>
-        <p>Marketing Manager</p>
-      </div>
-      <div class="team-member">
-        <img src="team4.jpg" alt="Laura Beispiel">
-        <h3>Laura Beispiel</h3>
-        <p>Finanzleiterin</p>
-      </div>
+  <!-- ÜBER MICH BEREICH -->
+  <section class="about-section" id="about">
+    <div class="about-text">
+      <h3>Hallo, ich bin [Dein Name]</h3>
+      <p>
+        Willkommen bei Grabenstein Sales! Ich bin [Dein Name], der Gründer und Inhaber dieses Unternehmens. Mit über [X] Jahren Erfahrung im Vertrieb habe ich es mir zur Aufgabe gemacht, innovative Vertriebsstrategien zu entwickeln und umzusetzen, die meinen Kunden nachhaltiges Wachstum und Erfolg bringen.
+      </p>
+      <p>
+        Mein Ziel ist es, eine persönliche und vertrauensvolle Beziehung zu meinen Kunden aufzubauen, um maßgeschneiderte Lösungen anzubieten, die genau auf ihre Bedürfnisse abgestimmt sind. Lassen Sie uns gemeinsam Ihren Vertrieb auf das nächste Level heben!
+      </p>
+    </div>
+    <div class="about-photo">
+      <img src="dein-foto.jpg" alt="[Dein Name]">
     </div>
   </section>
 
   <!-- UNSERE WERTE -->
-  <section class="werte">
+  <section class="werte-section">
     <h2>Unsere Werte</h2>
-    <ul>
-      <li>Integrität</li>
-      <li>Innovation</li>
-      <li>Zusammenarbeit</li>
-      <li>Exzellenz</li>
-      <li>Kundenorientierung</li>
-    </ul>
+    <div class="werte-container">
+      <div class="wert-item">
+        <h4>Integrität</h4>
+        <p>Wir handeln stets ehrlich und transparent, um das Vertrauen unserer Kunden zu gewinnen und zu bewahren.</p>
+      </div>
+      <div class="wert-item">
+        <h4>Innovation</h4>
+        <p>Durch kontinuierliche Weiterentwicklung bieten wir moderne und effektive Vertriebsstrategien.</p>
+      </div>
+      <div class="wert-item">
+        <h4>Exzellenz</h4>
+        <p>Wir streben nach höchster Qualität in allen Aspekten unserer Arbeit, um optimale Ergebnisse zu erzielen.</p>
+      </div>
+      <div class="wert-item">
+        <h4>Kundenorientierung</h4>
+        <p>Die Bedürfnisse unserer Kunden stehen im Mittelpunkt unseres Handelns und unserer Entscheidungen.</p>
+      </div>
+    </div>
   </section>
 
   <!-- UNSERE GESCHICHTE -->
-  <section class="geschichte">
+  <section class="geschichte-section">
     <h2>Unsere Geschichte</h2>
     <p>
-      Gegründet im Jahr 2010, hat sich Grabenstein Sales von einem kleinen Startup zu einem führenden Unternehmen im Vertriebssektor entwickelt. Unsere Reise ist geprägt von kontinuierlichem Wachstum, engagierten Mitarbeitern und zufriedenen Kunden. Wir setzen auf Qualität, Vertrauen und innovative Ansätze, um unsere Position am Markt stetig zu stärken.
+      Grabenstein Sales wurde im Jahr [Gründungsjahr] gegründet, mit der Vision, Unternehmen dabei zu unterstützen, ihre Vertriebsziele zu erreichen und zu übertreffen. Was als kleines Startup begann, hat sich schnell zu einem angesehenen Unternehmen im Vertriebssektor entwickelt.
+    </p>
+    <p>
+      Durch harte Arbeit, Engagement und den unermüdlichen Einsatz für unsere Kunden konnten wir kontinuierlich wachsen und unsere Dienstleistungen erweitern. Heute sind wir stolz darauf, eine Vielzahl von zufriedenen Kunden zu bedienen und ihnen zu helfen, in einem wettbewerbsintensiven Markt erfolgreich zu sein.
     </p>
   </section>
 
