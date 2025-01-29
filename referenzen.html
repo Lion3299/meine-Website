@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Referenzen – Grabenstein Sales</title>
+  <style>
+    /* RESET: Grundlegende Stile zurücksetzen */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f4f8;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* NAVIGATION */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      background: rgba(46, 139, 87, 0.9); /* Halbtransparenter Grünton */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-left,
+    .nav-center,
+    .nav-right {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-left {
+      gap: 30px;
+    }
+
+    .nav-right {
+      gap: 30px;
+    }
+
+    .logo-img {
+      height: 50px;
+      width: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .logo-img:hover {
+      transform: scale(1.1);
+    }
+
+    .nav-left a,
+    .nav-center h1,
+    .nav-right a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .nav-left a:hover,
+    .nav-right a:hover {
+      color: #d4af37; /* Goldfarbe beim Hover */
+    }
+
+    /* HERO-BEREICH */
+    .hero-section {
+      background: url('referenzen-hero-background.jpg') no-repeat center center/cover;
+      color: #fff;
+      padding: 150px 20px 80px 20px; /* Platz für die fixe Navbar */
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-section::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4); /* Dunkler Overlay */
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero-section h2 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      animation: fadeInDown 1s ease-out;
+    }
+
+    .hero-section p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    /* REFERENZEN BEREICH */
+    .referenzen-section {
+      padding: 60px 20px;
+      background-color: #fff;
+      text-align: center;
+    }
+
+    .referenzen-section h2 {
+      font-size: 2.5rem;
+      color: #2E8B57;
+      margin-bottom: 40px;
+      animation: fadeInDown 1s ease-out;
+    }
+
+    .referenzen-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .referenz-item {
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .referenz-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .referenz-quote {
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #555;
+      margin-bottom: 15px;
+      position: relative;
+      padding-left: 25px;
+    }
+
+    .referenz-quote::before {
+      content: "“";
+      position: absolute;
+      left: 0;
+      top: -5px;
+      font-size: 2rem;
+      color: #2E8B57;
+    }
+
+    .referenz-author {
+      font-weight: bold;
+      color: #2E8B57;
+      margin-bottom: 5px;
+    }
+
+    .referenz-position {
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    /* OPTIONALER CTA-BEREICH */
+    .cta-section {
+      padding: 60px 20px;
+      background-color: #f0f4f8;
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-size: 2rem;
+      color: #2E8B57;
+      margin-bottom: 20px;
+    }
+
+    .cta-section a {
+      display: inline-block;
+      padding: 15px 30px;
+      background-color: #2E8B57;
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .cta-section a:hover {
+      background-color: #1e6b45;
+      transform: translateY(-3px);
+    }
+
+    /* ANIMATIONEN */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* RESPONSIVES DESIGN */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+      }
+
+      .nav-left,
+      .nav-center,
+      .nav-right {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .hero-section {
+        padding: 100px 20px 60px 20px;
+      }
+
+      .referenzen-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .referenz-item {
+        width: 80%;
+      }
+
+      .referenz-quote {
+        font-size: 1rem;
+      }
+
+      .referenz-quote::before {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body class="referenzen-seite">
+
+  <!-- NAVIGATION -->
+  <nav class="navbar">
+    <!-- Linke Seite: Logo + Startseite -->
+    <div class="nav-left">
+      <a href="startseite.html">
+        <img src="logo2.png" alt="Grabenstein Sales Logo" class="logo-img">
+      </a>
+      <a href="startseite.html">Startseite</a>
+    </div>
+
+    <!-- Mitte: Firmenname -->
+    <div class="nav-center">
+      <h1>Grabenstein Sales</h1>
+    </div>
+
+    <!-- Rechte Seite: Angebote + Kontakt -->
+    <div class="nav-right">
+      <a href="angebot.html">Angebote</a>
+      <a href="kontakt.html">Kontakt</a>
+    </div>
+  </nav>
+
+  <!-- HERO-BEREICH -->
+  <div class="hero-section">
+    <div class="hero-content">
+      <h2>Referenzen</h2>
+      <p>Erfahrungen und Feedback unserer zufriedenen Kunden.</p>
+      <!-- Der gelbe Button wurde entfernt -->
+      <!-- <a href="#about" class="cta-button">Mehr erfahren</a> -->
+    </div>
+  </div>
+
+  <!-- REFERENZEN BEREICH -->
+  <section class="referenzen-section">
+    <h2>Unsere Kunden sagen</h2>
+    <div class="referenzen-container">
+      <!-- Referenz 1 -->
+      <div class="referenz-item">
+        <p class="referenz-quote">
+          "Grabenstein Sales hat unser Vertriebsteam revolutioniert. Ihre Strategien sind innovativ und effektiv."
+        </p>
+        <p class="referenz-author">Maria Musterfrau</p>
+        <p class="referenz-position">Geschäftsführerin, Musterfirma GmbH</p>
+      </div>
+
+      <!-- Referenz 2 -->
+      <div class="referenz-item">
+        <p class="referenz-quote">
+          "Dank Grabenstein Sales konnten wir unsere Umsätze im ersten Quartal um 30% steigern. Absolut empfehlenswert!"
+        </p>
+        <p class="referenz-author">Hans Beispiel</p>
+        <p class="referenz-position">Leiter Vertrieb, Beispiel AG</p>
+      </div>
+
+      <!-- Referenz 3 -->
+      <div class="referenz-item">
+        <p class="referenz-quote">
+          "Professionell, engagiert und immer einen Schritt voraus. Grabenstein Sales ist unser vertrauensvoller Partner."
+        </p>
+        <p class="referenz-author">Sabine Test</p>
+        <p class="referenz-position">CEO, Testunternehmen KG</p>
+      </div>
+
+      <!-- Weitere Referenzen nach Bedarf hinzufügen -->
+      <div class="referenz-item">
+        <p class="referenz-quote">
+          "Ihre Expertise im Vertrieb hat uns geholfen, neue Märkte zu erschließen und unser Geschäft nachhaltig zu wachsen."
+        </p>
+        <p class="referenz-author">Thomas Beispielmann</p>
+        <p class="referenz-position">Marketing Manager, Beispielmann GmbH</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPTIONALER CTA-BEREICH -->
+  <section class="cta-section">
+    <h2>Möchten Sie ähnliche Erfolge erzielen?</h2>
+    <a href="kontakt.html">Kontaktieren Sie uns</a>
+  </section>
+
+</body>
+</html>
