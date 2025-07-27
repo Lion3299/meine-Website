@@ -18,6 +18,8 @@
       font-family: Arial, sans-serif;
       color: #fff;
       background-color: #000; /* Fallback Hintergrundfarbe */
+      /* Platz unten freilassen für den fixierten Footer */
+      margin-bottom: 100px;
     }
     
     /* NAVIGATION */
@@ -29,10 +31,9 @@
       justify-content: space-between;
       align-items: center;
       padding: 20px 40px;
-      background: rgba(0, 0, 0, 0.5); /* Halbtransparente Hintergrund */
+      background: rgba(0, 0, 0, 0.5);
       z-index: 1000;
     }
-    
     .navbar a {
       color: #fff;
       text-decoration: none;
@@ -40,11 +41,9 @@
       margin-left: 20px;
       transition: color 0.3s ease;
     }
-    
     .navbar a:hover {
       color: #2E8B57;
     }
-    
     .logo-img {
       height: 60px;
     }
@@ -53,26 +52,24 @@
     .angebot-sektion {
       position: relative;
       height: 100vh;
-      background-image: url('background.jpg'); /* Ersetze mit deinem Bildpfad */
+      background-image: url('background.jpg');
       background-size: cover;
       background-position: center;
       display: flex;
       justify-content: center;
-      align-items: flex-start; /* Ermöglicht unterschiedliche Höhen */
+      align-items: flex-start;
       overflow: hidden;
-      padding-top: 80px; /* Platz für die fixe Navbar */
+      padding-top: 80px;
     }
-    
     .background-overlay {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.5); /* Verdunkelung */
+      background: rgba(0, 0, 0, 0.5);
       z-index: 1;
     }
-    
     .angebote-container {
       position: relative;
       display: flex;
@@ -82,153 +79,62 @@
       max-width: 1200px;
       justify-content: center;
       flex-wrap: wrap;
-      align-items: flex-start; /* Ermöglicht unterschiedliche Höhen */
-      padding-top: 50px; /* Verschiebung nach unten */
+      align-items: flex-start;
+      padding-top: 50px;
     }
     
-    /* Flip-Card-Stile */
-    .angebot-item {
-      perspective: 1000px; /* Perspektive für den 3D-Effekt */
-      width: 45%; /* Feste Breite */
-      flex: 0 1 45%; /* Kein Flex-Wachstum, erlaubtes Schrumpfen, Basisbreite 45% */
-      height: 500px; /* Feste Höhe für die Vorderseite */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: height 0.6s;
-      position: relative;
-      margin-bottom: 40px; /* Abstand nach unten */
-      align-self: flex-start; /* Verhindert, dass die Höhe anderer Elemente beeinflusst wird */
-      z-index: 1; /* Standard z-index */
-    }
+    /* Flip-Card-Stile (unverändert) */
+    .angebot-item { perspective: 1000px; width: 45%; flex: 0 1 45%; height: 500px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: height 0.6s; position: relative; margin-bottom: 40px; align-self: flex-start; z-index: 1; }
+    .angebot-item.flipped .inner { transform: rotateY(180deg); }
+    .angebot-item.flipped { height: 700px; z-index: 2; margin-bottom: 20px; }
+    .inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; }
+    .front, .back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 60px 40px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); overflow: hidden; }
+    .back { transform: rotateY(180deg); padding: 80px 40px; background-color: inherit; }
+    .angebot-item.blau .front, .angebot-item.blau .back { background-color: #1E90FF; }
+    .angebot-item.gruen .front, .angebot-item.gruen .back { background-color: #228B22; }
+    .angebot-item h2 { margin-bottom: 20px; font-size: 2em; }
+    .angebot-item p { font-size: 1.2em; flex-grow: 1; }
+    .cta-button { background-color: #fff; color: #2E8B57; border: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; cursor: pointer; transition: background-color 0.3s ease, color 0.3s ease; font-size: 1em; align-self: center; }
+    .cta-button:hover { background-color: #2E8B57; color: #fff; }
     
-    /* Flip-Klasse zum Drehen */
-    .angebot-item.flipped .inner {
-      transform: rotateY(180deg);
-    }
-    
-    /* Größe beim Drehen */
-    .angebot-item.flipped {
-      height: 700px; /* Erhöhte feste Höhe beim Drehen */
-      z-index: 2; /* Höhere z-index, damit es über anderen bleibt */
-      margin-bottom: 20px; /* Fügt Abstand unterhalb hinzu */
-    }
-    
-    .inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      text-align: center;
-      transition: transform 0.6s;
-      transform-style: preserve-3d;
-    }
-    
-    /* Vorderseite der Karte */
-    .front, .back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 60px 40px; /* Angepasstes vertikales Padding für die Vorderseite */
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      overflow: hidden;
-    }
-    
-    .front {
-      /* Farbige Hintergründe werden über die Angebot-spezifischen Klassen gesteuert */
-    }
-    
-    /* Rückseite der Karte */
-    .back {
-      transform: rotateY(180deg);
-      padding: 80px 40px; /* Angepasstes vertikales Padding für die Rückseite */
-      background-color: inherit; /* Gleiche Farbe wie die Vorderseite */
-    }
-    
-    /* Spezifische Farben für Front und Back */
-    .angebot-item.blau .front,
-    .angebot-item.blau .back {
-      background-color: #1E90FF; /* Klarer Blauton */
-    }
-    
-    .angebot-item.gruen .front,
-    .angebot-item.gruen .back {
-      background-color: #228B22; /* Grün */
-    }
-    
-    .angebot-item h2 {
-      margin-bottom: 20px;
-      font-size: 2em;
-    }
-    
-    .angebot-item p {
-      font-size: 1.2em;
-      flex-grow: 1;
-    }
-    
-    .cta-button {
-      background-color: #fff;
-      color: #2E8B57;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      font-size: 1em;
-      align-self: center;
-    }
-    
-    .cta-button:hover {
-      background-color: #2E8B57;
-      color: #fff;
-    }
-    
-    /* RESPONSIVE DESIGN */
+    /* RESPONSIVE DESIGN (unverändert) */
     @media (max-width: 768px) {
-      .angebote-container {
-        flex-direction: column;
-        gap: 20px;
-        padding-top: 20px; /* Weniger Verschiebung auf mobilen Geräten */
-      }
-      
-      .angebot-item {
-        width: 100%;
-        flex: 0 1 100%; /* Feste Breite für mobile Geräte */
-        height: 400px; /* Angepasste feste Höhe für mobile Geräte */
-      }
-      
-      .angebot-item.flipped {
-        height: 600px; /* Erhöhte feste Höhe beim Drehen für mobile Geräte */
-      }
-      
-      .front, .back {
-        padding: 40px 20px; /* Angepasstes Padding für kleinere Bildschirme */
-      }
-      
-      .back {
-        padding: 60px 20px; /* Angepasstes Padding für die Rückseite */
-      }
+      .angebote-container { flex-direction: column; gap: 20px; padding-top: 20px; }
+      .angebot-item { width: 100%; flex: 0 1 100%; height: 400px; }
+      .angebot-item.flipped { height: 600px; }
+      .front, .back { padding: 40px 20px; }
+      .back { padding: 60px 20px; }
+    }
+
+    /* FIXED FOOTER */
+    footer.footer-fixed {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    footer.footer-fixed .footer-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    footer.footer-fixed a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    footer.footer-fixed a:hover {
+      color: #ccc;
     }
   </style>
 </head>
 <body>
-  
   <!-- NAVIGATION -->
   <nav class="navbar">
     <div class="nav-left">
-      <!-- Logo -> Link zur Startseite -->
-      <a href="startseite.html">
-        <img src="logo2.png" alt="Grabenstein Sales Logo" class="logo-img">
-      </a>
+      <a href="startseite.html"><img src="logo2.png" alt="Grabenstein Sales Logo" class="logo-img"></a>
     </div>
-    <!-- Nur Link zur Startseite -->
     <div class="nav-right">
       <a href="startseite.html">Startseite</a>
     </div>
@@ -236,12 +142,8 @@
   
   <!-- HAUPTINHALT -->
   <div class="angebot-sektion">
-    <!-- Hintergrundverdunkelung -->
     <div class="background-overlay"></div>
-    
-    <!-- Angebotscontainer -->
     <div class="angebote-container">
-      <!-- Angebot 1 -->
       <div class="angebot-item blau">
         <div class="inner">
           <div class="front">
@@ -260,12 +162,10 @@
           </div>
         </div>
       </div>
-      
-      <!-- Angebot 2 -->
       <div class="angebot-item gruen">
         <div class="inner">
           <div class="front">
-            <h2>Plus Paket</h2> 
+            <h2>Plus Paket</h2>
             <p>Für Startups, die aktiv Kunden gewinnen und eine langjährige Vertriebsstrategie aufbauen möchten.</p>
           </div>
           <div class="back">
@@ -282,22 +182,25 @@
       </div>
     </div>
   </div>
-  
-  <!-- JAVASCRIPT FÜR FLIP-EFFEKT -->
+
+  <!-- JS FÜR FLIP-EFFEKT -->
   <script>
-    // Funktion zum Öffnen und Drehen des Angebotsfelds
     document.querySelectorAll('.angebot-item').forEach(item => {
       item.addEventListener('click', (e) => {
-        // Verhindere, dass der Klick auf den Button das Flippen auslöst
-        if (e.target.classList.contains('cta-button')) {
-          return;
-        }
-        // Toggle die 'flipped' Klasse nur auf dem geklickten Angebotsfeld
+        if (e.target.classList.contains('cta-button')) return;
         item.classList.toggle('flipped');
       });
     });
   </script>
-  
+
+  <!-- FIXED FOOTER -->
+  <footer class="footer-fixed bg-dark text-white">
+    <div class="container footer-container py-3">
+      <div><a href="impressum.html">Impressum</a></div>
+      <div><a href="agb.html">AGB</a></div>
+      <div><a href="datenschutz.html">Datenschutzerklärung</a></div>
+    </div>
+  </footer>
 </body>
 </html>
  
