@@ -7,106 +7,167 @@
   <style>
     /* RESET */
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f0f4f8;
       color: #333;
       line-height: 1.6;
-      margin-bottom: 60px; /* Platz für Footer */
+      margin-bottom: 100px; /* Platz für Footer */
     }
-
     /* NAVIGATION */
-    .navbar { position: fixed; top:0; left:0; width:100%; z-index:1000;
-      display:flex; justify-content:space-between; align-items:center;
-      padding:15px 40px; background:rgba(46,139,87,0.9);
-      box-shadow:0 2px 4px rgba(0,0,0,0.1);
+    .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 15px 40px; background: rgba(46,139,87,0.9);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-    .nav-left,.nav-center,.nav-right{display:flex;align-items:center;}
-    .nav-left{gap:30px;}.nav-right{gap:30px;}
-    .logo-img{height:50px;width:auto;transition:transform .3s;} .logo-img:hover{transform:scale(1.1);}
-    .nav-left a,.nav-center h1,.nav-right a{color:#fff;text-decoration:none;font-weight:bold;transition:color .3s;}
-    .nav-left a:hover,.nav-right a:hover{color:#d4af37;}
-
+    .nav-left, .nav-center, .nav-right { display: flex; align-items: center; }
+    .nav-left { gap: 30px; }
+    .nav-right { gap: 30px; }
+    .logo-img { height: 50px; width: auto; transition: transform .3s; }
+    .logo-img:hover { transform: scale(1.1); }
+    .nav-left a, .nav-center h1, .nav-right a {
+      color: #fff; text-decoration: none; font-weight: bold; transition: color .3s;
+    }
+    .nav-left a:hover, .nav-right a:hover { color: #d4af37; }
     /* HERO */
-    .hero-section { margin-top:80px;
-      background:url('hero-background.jpg') no-repeat center/cover;
-      color:#fff; padding:150px 20px 80px; text-align:center; position:relative;
+    .hero-section { margin-top: 80px;
+      background: url('hero-background.jpg') no-repeat center/cover;
+      color: #fff; padding: 150px 20px 80px; text-align: center; position: relative;
     }
-    .hero-section::after { content:""; position:absolute; inset:0; background:rgba(0,0,0,0.4); z-index:1; }
-    .hero-content{position:relative;z-index:2;max-width:800px;margin:0 auto;}
-    .hero-section h2{font-size:3rem;margin-bottom:20px;animation:fadeInDown 1s ease-out;}
-    .hero-section p{font-size:1.2rem;margin-bottom:30px;animation:fadeInUp 1s ease-out;}
-
+    .hero-section::after { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.4); z-index: 1; }
+    .hero-content { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
+    .hero-section h2 { font-size: 3rem; margin-bottom: 20px; animation: fadeInDown 1s ease-out; }
+    .hero-section p { font-size: 1.2rem; margin-bottom: 30px; animation: fadeInUp 1s ease-out; }
     /* ABOUT */
-    .about-section{padding:60px 20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;background:#fff;}
-    .about-text{flex:1 1 400px;max-width:600px;padding:20px;animation:fadeInLeft 1s ease-out;}
-    .about-text h3{font-size:2rem;color:#2E8B57;margin-bottom:20px;}
-    .about-text p{font-size:1rem;margin-bottom:20px;}
-    .about-photo{flex:1 1 300px;max-width:400px;padding:20px;text-align:center;animation:fadeInRight 1s ease-out;}
-    .about-photo img{width:100%;max-width:250px;border-radius:50%;box-shadow:0 4px 8px rgba(0,0,0,0.1);transition:transform .3s;}
-    .about-photo img:hover{transform:scale(1.05);box-shadow:0 6px 12px rgba(0,0,0,0.2);}
-
+    .about-section { padding: 60px 20px; display: flex; flex-wrap: wrap;
+      align-items: center; justify-content: center; background: #fff;
+    }
+    .about-text { flex: 1 1 400px; max-width: 600px; padding: 20px; animation: fadeInLeft 1s ease-out; }
+    .about-text h3 { font-size: 2rem; color: #2E8B57; margin-bottom: 20px; }
+    .about-text p { font-size: 1rem; margin-bottom: 20px; }
+    .about-photo { flex: 1 1 300px; max-width: 400px; padding: 20px; text-align: center; animation: fadeInRight 1s ease-out; }
+    .about-photo img { width: 100%; max-width: 250px; border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform .3s;
+    }
+    .about-photo img:hover { transform: scale(1.05); box-shadow: 0 6px 12px rgba(0,0,0,0.2); }
     /* WERTE */
-    .werte-section{padding:60px 20px;background:#f0f4f8;text-align:center;}
-    .werte-section h2{font-size:2rem;color:#2E8B57;margin-bottom:40px;}
-    .werte-container{display:flex;flex-wrap:wrap;justify-content:center;gap:30px;}
-    .wert-item{background:#fff;padding:20px;border-radius:10px;width:250px;box-shadow:0 4px 6px rgba(0,0,0,0.1);transition:transform .3s;}
-    .wert-item:hover{transform:translateY(-5px);}
-    .wert-item h4{font-size:1.5rem;color:#2E8B57;margin-bottom:10px;}
-    .wert-item p{font-size:1rem;color:#555;}
-
+    .werte-section { padding: 60px 20px; background: #f0f4f8; text-align: center; }
+    .werte-section h2 { font-size: 2rem; color: #2E8B57; margin-bottom: 40px; }
+    .werte-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
+    .wert-item { background: #fff; padding: 20px; border-radius: 10px; width: 250px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform .3s;
+    }
+    .wert-item:hover { transform: translateY(-5px); }
+    .wert-item h4 { font-size: 1.5rem; color: #2E8B57; margin-bottom: 10px; }
+    .wert-item p { font-size: 1rem; color: #555; }
     /* GESCHICHTE */
-    .geschichte-section{padding:60px 20px;background:#e0e0e0;text-align:center;}
-    .geschichte-section h2{font-size:2rem;color:#2E8B57;margin-bottom:20px;}
-    .geschichte-section p{font-size:1rem;line-height:1.6;max-width:800px;margin:0 auto 20px;}
-
+    .geschichte-section { padding: 60px 20px; background: #e0e0e0; text-align: center; }
+    .geschichte-section h2 { font-size: 2rem; color: #2E8B57; margin-bottom: 20px; }
+    .geschichte-section p { font-size: 1rem; line-height: 1.6; max-width: 800px; margin: 0 auto 20px; }
     /* FOOTER */
-    footer{background:#000;color:#fff;font-size:0.6rem;padding:5px 20px;}
-    .footer-container{display:flex;align-items:center;justify-content:center;max-width:1200px;margin:0 auto;padding:5px 20px;}
-    .footer-container .footer-copyright{margin-right:auto;}
-    .footer-links{display:flex;gap:15px;}
-    .footer-links a{color:#fff;text-decoration:none;transition:color .2s;}
-    .footer-links a:hover{color:#ccc;}
-
+    footer {
+      background-color: #000;
+      color: #fff;
+      font-size: 0.65rem;
+      padding: 15px 0;
+    }
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+    }
+    .footer-container .footer-copyright {
+      margin-right: auto;
+    }
+    .footer-links {
+      display: flex;
+      gap: 8px;
+      margin: 0 auto;
+    }
+    .footer-links a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: #ccc; }
     /* KEYFRAMES */
-    @keyframes fadeInDown{from{opacity:0;transform:translateY(-20px);}to{opacity:1;transform:translateY(0);}}
-    @keyframes fadeInUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
-    @keyframes fadeInLeft{from{opacity:0;transform:translateX(-20px);}to{opacity:1;transform:translateX(0);}}
-    @keyframes fadeInRight{from{opacity:0;transform:translateX(20px);}to{opacity:1;transform:translateX(0);}}
-
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInLeft { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes fadeInRight { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
     /* RESPONSIVE */
-    @media (max-width:768px){.navbar{flex-direction:column;padding:15px 20px;}.nav-left,.nav-center,.nav-right{flex-direction:column;align-items:flex-start;gap:10px;}.hero-section{padding:100px 20px 60px;}.about-section{flex-direction:column;}.werte-container{flex-direction:column;}}
+    @media (max-width: 768px) {
+      .navbar { flex-direction: column; padding: 15px 20px; }
+      .nav-left, .nav-center, .nav-right { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .hero-section { padding: 100px 20px 60px; }
+      .about-section { flex-direction: column; }
+      .werte-container { flex-direction: column; }
+    }
   </style>
 </head>
 <body>
   <!-- NAVIGATION -->
   <nav class="navbar">
-    <div class="nav-left"><a href="startseite.html"><img src="logo2.png" alt="Logo" class="logo-img"></a><a href="startseite.html">Startseite</a></div>
+    <div class="nav-left">
+      <a href="startseite.html"><img src="logo2.png" alt="Grabenstein Sales Logo" class="logo-img"></a>
+      <a href="startseite.html">Startseite</a>
+    </div>
     <div class="nav-center"><h1>Grabenstein Sales</h1></div>
-    <div class="nav-right"><a href="angebot.html">Angebote</a><a href="kontakt.html">Kontakt</a></div>
+    <div class="nav-right">
+      <a href="angebot.html">Angebote</a>
+      <a href="kontakt.html">Kontakt</a>
+    </div>
   </nav>
 
   <!-- HERO -->
-  <div class="hero-section"><div class="hero-content"><h2>Über Uns</h2><p>Erfahre mehr über unser Unternehmen, unsere Werte und unser Team.</p></div></div>
+  <div class="hero-section">
+    <div class="hero-content">
+      <h2>Über Uns</h2>
+      <p>Erfahre mehr über unser Unternehmen, unsere Werte und unser Team.</p>
+    </div>
+  </div>
 
   <!-- ABOUT -->
   <section class="about-section" id="about">
-    <div class="about-text"><h3>Moin, ich bin Leon</h3><p>Ich helfe Startups dabei, ihren Vertrieb ...</p></div>
-    <div class="about-photo"><img src="dein-foto.jpg" alt="Leon"></div>
+    <div class="about-text">
+      <h3>Moin, ich bin Leon</h3>
+      <p>Ich helfe Startups dabei, ihren Vertrieb ...</p>
+    </div>
+    <div class="about-photo">
+      <img src="dein-foto.jpg" alt="Leon">
+    </div>
   </section>
 
   <!-- WERTE -->
-  <section class="werte-section"><h2>Unsere Werte</h2><div class="werte-container"><div class="wert-item"><h4>Integrität</h4><p>...</p></div><div class="wert-item"><h4>Innovation</h4><p>...</p></div><div class="wert-item"><h4>Exzellenz</h4><p>...</p></div><div class="wert-item"><h4>Kundenorientierung</h4><p>...</p></div></div></section>
+  <section class="werte-section">
+    <h2>Unsere Werte</h2>
+    <div class="werte-container">
+      <div class="wert-item"><h4>Integrität</h4><p>...</p></div>
+      <div class="wert-item"><h4>Innovation</h4><p>...</p></div>
+      <div class="wert-item"><h4>Exzellenz</h4><p>...</p></div>
+      <div class="wert-item"><h4>Kundenorientierung</h4><p>...</p></div>
+    </div>
+  </section>
 
   <!-- GESCHICHTE -->
-  <section class="geschichte-section"><h2>Unsere Geschichte</h2><p>Grabenstein Sales wurde 2024 ...</p><p>...</p></section>
+  <section class="geschichte-section">
+    <h2>Unsere Geschichte</h2>
+    <p>Grabenstein Sales wurde 2024 ...</p>
+    <p>...</p>
+  </section>
 
   <!-- FOOTER -->
   <footer>
     <div class="footer-container">
       <div class="footer-copyright">&copy; 2025 Grabenstein Sales</div>
-      <div class="footer-links"><a href="impressum.html">Impressum</a><a href="agb.html">AGB</a><a href="datenschutz.html">Datenschutz</a><a href="kontakt.html">Kontakt</a></div>
+      <div class="footer-links">
+        <a href="impressum.html">Impressum</a>
+        <a href="agb.html">AGB</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="kontakt.html">Kontakt</a>
+      </div>
     </div>
   </footer>
 </body>
