@@ -1,217 +1,181 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Angebote – Grabenstein Sales</title>
-  
-  <style>
-    /* RESET */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body, html {
-      height: 100%;
-      font-family: Arial, sans-serif;
-      color: #fff;
-      background-color: #000; /* Fallback Hintergrundfarbe */
-      /* Platz unten freilassen für den fixierten Footer */
-      margin-bottom: 100px;
-    }
-    
-    /* NAVIGATION */
-    .navbar {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 1000;
-    }
-    .navbar a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      margin-left: 20px;
-      transition: color 0.3s ease;
-    }
-    .navbar a:hover {
-      color: #2E8B57;
-    }
-    .logo-img {
-      height: 60px;
-    }
-    
-    /* HAUPTINHALT */
-    .angebot-sektion {
-      position: relative;
-      height: 100vh;
-      background-image: url('background.jpg');
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      overflow: hidden;
-      padding-top: 80px;
-    }
-    .background-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 1;
-    }
-    .angebote-container {
-      position: relative;
-      display: flex;
-      gap: 40px;
-      z-index: 2;
-      width: 80%;
-      max-width: 1200px;
-      justify-content: center;
-      flex-wrap: wrap;
-      align-items: flex-start;
-      padding-top: 50px;
-    }
-    
-    /* Flip-Card-Stile (unverändert) */
-    .angebot-item { perspective: 1000px; width: 45%; flex: 0 1 45%; height: 500px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: height 0.6s; position: relative; margin-bottom: 40px; align-self: flex-start; z-index: 1; }
-    .angebot-item.flipped .inner { transform: rotateY(180deg); }
-    .angebot-item.flipped { height: 700px; z-index: 2; margin-bottom: 20px; }
-    .inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; }
-    .front, .back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 60px 40px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); overflow: hidden; }
-    .back { transform: rotateY(180deg); padding: 80px 40px; background-color: inherit; }
-    .angebot-item.blau .front, .angebot-item.blau .back { background-color: #1E90FF; }
-    .angebot-item.gruen .front, .angebot-item.gruen .back { background-color: #228B22; }
-    .angebot-item h2 { margin-bottom: 20px; font-size: 2em; }
-    .angebot-item p { font-size: 1.2em; flex-grow: 1; }
-    .cta-button { background-color: #fff; color: #2E8B57; border: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; cursor: pointer; transition: background-color 0.3s ease, color 0.3s ease; font-size: 1em; align-self: center; }
-    .cta-button:hover { background-color: #2E8B57; color: #fff; }
-    
-    /* RESPONSIVE DESIGN (unverändert) */
-    @media (max-width: 768px) {
-      .angebote-container { flex-direction: column; gap: 20px; padding-top: 20px; }
-      .angebot-item { width: 100%; flex: 0 1 100%; height: 400px; }
-      .angebot-item.flipped { height: 600px; }
-      .front, .back { padding: 40px 20px; }
-      .back { padding: 60px 20px; }
-    }
-
-    /* FIXED FOOTER */
-      footer.footer-fixed {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      font-size: 0.6rem; /* Schriftgröße im Footer verkleinert */
-    }
-    footer.footer-fixed .footer-container {
-      display: flex;
-      align-items: center;
-    }
-    footer.footer-fixed .copyright {
-      flex: 0 0 auto;
-      padding-left: 20px;
-    }
-    footer.footer-fixed .footer-links {
-      margin: 0 auto;
-    }
-    footer.footer-fixed .footer-links a {
-      margin: 0 30px;
-      color: #fff;
-      text-decoration: none;
-      transition: color .2s;
-    }
-    footer.footer-fixed .footer-links a:hover { color: #ccc; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leistungen – Grabenstein Sales</title>
+<meta name="description" content="Basic und Plus Paket: zwei Wege, den Vertrieb deines Startups gemeinsam aufzubauen – vom kompakten Einstieg bis zur längeren Begleitung.">
+<link rel="canonical" href="https://www.grabensteinsales.de/angebot.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Grabenstein Sales">
+<meta property="og:title" content="Leistungen – Grabenstein Sales">
+<meta property="og:description" content="Basic und Plus Paket: zwei Wege, den Vertrieb deines Startups gemeinsam aufzubauen – vom kompakten Einstieg bis zur längeren Begleitung.">
+<meta property="og:url" content="https://www.grabensteinsales.de/angebot.html">
+<meta property="og:locale" content="de_DE">
+<link rel="icon" href="favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- NAVIGATION -->
-  <nav class="navbar">
-    <div class="nav-left">
-      <a href="startseite.html"><img src="logo2.png" alt="Grabenstein Sales Logo" class="logo-img"></a>
-    </div>
-    <div class="nav-right">
-      <a href="startseite.html">Startseite</a>
-    </div>
-  </nav>
-  
-  <!-- HAUPTINHALT -->
-  <div class="angebot-sektion">
-    <div class="background-overlay"></div>
-    <div class="angebote-container">
-      <div class="angebot-item blau">
-        <div class="inner">
-          <div class="front">
-            <h2>Basic Paket</h2>
-            <p>Ideal für junge Startups, die erste Kunden gewinnen möchten, aber noch keine feste Vertriebsstruktur haben.</p>
-          </div>
-          <div class="back">
-            <h2>Angebot 1 Details</h2>
-            <p>Dieses Angebot umfasst:</p>
-            <ul>
-              <li>Leistungsbeschreibung 1</li>
-              <li>Leistungsbeschreibung 2</li>
-              <li>Leistungsbeschreibung 3</li>
-            </ul>
-            <button class="cta-button" onclick="location.href='kontakt.html'">Angebot anfordern</button>
-          </div>
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="nav__brand" href="index.html">
+      <img class="nav__logo" src="logo-dunkel.png" alt="" width="320" height="320">
+      <span class="nav__name">Grabenstein Sales</span>
+    </a>
+    <button class="nav__burger" type="button" aria-expanded="false" aria-controls="hauptmenue" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="hauptmenue">
+        <li><a href="index.html">Start</a></li>
+        <li><a href="ueber-uns.html">Über mich</a></li>
+        <li><a href="angebot.html">Leistungen</a></li>
+        <li><a href="ablauf.html">So arbeite ich</a></li>
+        <li><a class="btn btn--primary" href="kontakt.html">Kontakt</a></li>
+    </ul>
+  </div>
+</header>
+<main id="main">
+
+<section class="hero hero--sub">
+  <div class="wrap hero__inner">
+    <h1>Leistungen</h1>
+    <p>Zwei Pakete, je nachdem wie viel Vertriebsstruktur bei dir schon steht.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="grid grid--2">
+
+      <!-- ============ BASIC ============ -->
+      <article class="card plan">
+        <h3>Basic Paket</h3>
+        <p>Ideal für junge Startups, die erste Kunden gewinnen möchten, aber noch keine
+           feste Vertriebsstruktur haben.</p>
+        <div class="plan__price">
+          <span class="todo">[Preis eintragen oder „auf Anfrage“]</span>
+          <small>keine USt. (Kleinunternehmer nach § 19 UStG)</small>
         </div>
-      </div>
-      <div class="angebot-item gruen">
-        <div class="inner">
-          <div class="front">
-            <h2>Plus Paket</h2>
-            <p>Für Startups, die aktiv Kunden gewinnen und eine langjährige Vertriebsstrategie aufbauen möchten.</p>
-          </div>
-          <div class="back">
-            <h2>Angebot 2 Details</h2>
-            <p>Dieses Angebot umfasst:</p>
-            <ul>
-              <li>Leistungsbeschreibung A</li>
-              <li>Leistungsbeschreibung B</li>
-              <li>Leistungsbeschreibung C</li>
-            </ul>
-            <button class="cta-button" onclick="location.href='kontakt.html'">Angebot anfordern</button>
-          </div>
+        <p><span class="todo">Entwurf – bitte prüfen und durch deine echten Leistungen ersetzen:</span></p>
+        <ul>
+          <li>Analyse deiner aktuellen Vertriebssituation</li>
+          <li>Zielgruppe und Wunschkunde klar definiert</li>
+          <li>Ansprache und Gesprächsleitfaden für den Erstkontakt</li>
+          <li>Gemeinsame Live-Gespräche mit echten Interessenten</li>
+          <li>Kompakte Handlungsempfehlung zum Abschluss</li>
+        </ul>
+        <a class="btn btn--outline" href="kontakt.html">Basic Paket anfragen</a>
+      </article>
+
+      <!-- ============ PLUS ============ -->
+      <article class="card plan plan--featured">
+        <span class="plan__tag">Meist gewählt</span>
+        <h3>Plus Paket</h3>
+        <p>Für Startups, die aktiv Kunden gewinnen und eine langfristige Vertriebsstrategie
+           aufbauen möchten.</p>
+        <div class="plan__price">
+          <span class="todo">[Preis eintragen oder „auf Anfrage“]</span>
+          <small>keine USt. (Kleinunternehmer nach § 19 UStG)</small>
         </div>
-      </div>
+        <p><span class="todo">Entwurf – bitte prüfen und durch deine echten Leistungen ersetzen:</span></p>
+        <ul>
+          <li>Alles aus dem Basic Paket</li>
+          <li>Aufbau einer Vertriebspipeline inklusive Tool-Einrichtung</li>
+          <li>Angebots- und Nachfassprozess, der wirklich genutzt wird</li>
+          <li>Schulung deines Teams am echten Fall</li>
+          <li>Feste Begleitung über <span class="todo">[Zeitraum]</span> mit regelmäßigen Terminen</li>
+          <li>Kennzahlen, mit denen du den Vertrieb steuern kannst</li>
+        </ul>
+        <a class="btn btn--primary" href="kontakt.html">Plus Paket anfragen</a>
+      </article>
+
     </div>
   </div>
+</section>
 
-  <!-- JS FÜR FLIP-EFFEKT -->
-  <script>
-    document.querySelectorAll('.angebot-item').forEach(item => {
-      item.addEventListener('click', (e) => {
-        if (e.target.classList.contains('cta-button')) return;
-        item.classList.toggle('flipped');
-      });
-    });
-  </script>
+<section class="section section--soft">
+  <div class="wrap">
+    <div class="section__head section__head--center">
+      <span class="eyebrow">Häufige Fragen</span>
+      <h2>Bevor du anfragst</h2>
+    </div>
+    <div class="grid grid--2">
+      <article class="card">
+        <h3>Für wen ist das nichts?</h3>
+        <p>Wenn du jemanden suchst, der dir fertige Kundenlisten verkauft oder
+           in deinem Namen Kaltakquise betreibt, bin ich der Falsche.
+           Ich baue mit dir auf – ich übernehme nicht.</p>
+      </article>
+      <article class="card">
+        <h3>Wie lange dauert das?</h3>
+        <p><span class="todo">[Bitte ergänzen: typische Dauer der beiden Pakete,
+           z.&nbsp;B. „Basic: 2–3 Wochen, Plus: 3–6 Monate“]</span></p>
+      </article>
+      <article class="card">
+        <h3>Wie läuft der Start ab?</h3>
+        <p>Immer mit einem unverbindlichen Gespräch von etwa 30 Minuten.
+           Danach bekommst du ein schriftliches Angebot – erst dann entscheidest du.</p>
+      </article>
+      <article class="card">
+        <h3>Arbeitest du vor Ort?</h3>
+        <p><span class="todo">[Bitte ergänzen: remote, vor Ort, oder beides?
+           Falls vor Ort: in welchem Umkreis?]</span></p>
+      </article>
+    </div>
+  </div>
+</section>
 
- <!-- FIXED FOOTER -->
-  <footer class="footer-fixed bg-dark text-white">
-    <div class="container footer-container py-3">
-      <div class="copyright">
-        &copy; 2025 Grabenstein Sales
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Noch unsicher, welches Paket passt?</h2>
+    <p>Schreib mir kurz, wo du stehst. Ich sage dir ehrlich, was Sinn ergibt –
+       auch wenn das heißt, dass du noch warten solltest.</p>
+    <a class="btn btn--primary" href="kontakt.html">Frage stellen</a>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <strong>Grabenstein Sales</strong>
+        <p>Gemeinsam starten. Gemeinsam wachsen.</p>
       </div>
-      <div class="footer-links">
-        <a href="impressum.html">Impressum</a>
-        <a href="agb.html">AGB</a>
-        <a href="datenschutz.html">Datenschutz</a>
-        <a href="kontakt.html">Kontakt</a>
+      <div>
+        <h4>Seiten</h4>
+        <ul>
+        <li><a href="index.html">Start</a></li>
+        <li><a href="ueber-uns.html">Über mich</a></li>
+        <li><a href="angebot.html">Leistungen</a></li>
+        <li><a href="ablauf.html">So arbeite ich</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
       </div>
-  </footer>
+      <div>
+        <h4>Rechtliches</h4>
+        <ul>
+          <li><a href="impressum.html">Impressum</a></li>
+          <li><a href="datenschutz.html">Datenschutzerklärung</a></li>
+          <li><a href="agb.html">AGB</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="mailto:grabenstein.sales@outlook.com">grabenstein.sales@outlook.com</a></li>
+          <li><a href="tel:+491771748147">0177 1748147</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; <span data-year>2026</span> Grabenstein Sales</span>
+      <span>Alle Rechte vorbehalten.</span>
+    </div>
+  </div>
+</footer>
+<script src="js/main.js"></script>
 </body>
 </html>
- 

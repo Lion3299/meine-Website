@@ -1,177 +1,156 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Über Uns – Grabenstein Sales</title>
-  <style>
-    /* RESET */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f0f4f8;
-      color: #333;
-      line-height: 1.6;
-      margin-bottom: 100px; /* Platz für Footer */
-    }
-    /* NAVIGATION */
-    .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 15px 40px; background: rgba(46,139,87,0.9);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    .nav-left, .nav-center, .nav-right { display: flex; align-items: center; }
-    .nav-left { gap: 30px; }
-    .nav-right { gap: 30px; }
-    .logo-img { height: 50px; width: auto; transition: transform .3s; }
-    .logo-img:hover { transform: scale(1.1); }
-    .nav-left a, .nav-center h1, .nav-right a {
-      color: #fff; text-decoration: none; font-weight: bold; transition: color .3s;
-    }
-    .nav-left a:hover, .nav-right a:hover { color: #d4af37; }
-    /* HERO */
-    .hero-section { margin-top: 80px;
-      background: url('hero-background.jpg') no-repeat center/cover;
-      color: #fff; padding: 150px 20px 80px; text-align: center; position: relative;
-    }
-    .hero-section::after { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.4); z-index: 1; }
-    .hero-content { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
-    .hero-section h2 { font-size: 3rem; margin-bottom: 20px; animation: fadeInDown 1s ease-out; }
-    .hero-section p { font-size: 1.2rem; margin-bottom: 30px; animation: fadeInUp 1s ease-out; }
-    /* ABOUT */
-    .about-section { padding: 60px 20px; display: flex; flex-wrap: wrap;
-      align-items: center; justify-content: center; background: #fff;
-    }
-    .about-text { flex: 1 1 400px; max-width: 600px; padding: 20px; animation: fadeInLeft 1s ease-out; }
-    .about-text h3 { font-size: 2rem; color: #2E8B57; margin-bottom: 20px; }
-    .about-text p { font-size: 1rem; margin-bottom: 20px; }
-    .about-photo { flex: 1 1 300px; max-width: 400px; padding: 20px; text-align: center; animation: fadeInRight 1s ease-out; }
-    .about-photo img { width: 100%; max-width: 250px; border-radius: 50%;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform .3s;
-    }
-    .about-photo img:hover { transform: scale(1.05); box-shadow: 0 6px 12px rgba(0,0,0,0.2); }
-    /* WERTE */
-    .werte-section { padding: 60px 20px; background: #f0f4f8; text-align: center; }
-    .werte-section h2 { font-size: 2rem; color: #2E8B57; margin-bottom: 40px; }
-    .werte-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
-    .wert-item { background: #fff; padding: 20px; border-radius: 10px; width: 250px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform .3s;
-    }
-    .wert-item:hover { transform: translateY(-5px); }
-    .wert-item h4 { font-size: 1.5rem; color: #2E8B57; margin-bottom: 10px; }
-    .wert-item p { font-size: 1rem; color: #555; }
-    /* GESCHICHTE */
-    .geschichte-section { padding: 60px 20px; background: #e0e0e0; text-align: center; }
-    .geschichte-section h2 { font-size: 2rem; color: #2E8B57; margin-bottom: 20px; }
-    .geschichte-section p { font-size: 1rem; line-height: 1.6; max-width: 800px; margin: 0 auto 20px; }
-    /* FOOTER */
-    footer {
-      background-color: #000;
-      color: #fff;
-      font-size: 0.65rem;
-      padding: 15px 0;
-    }
-    .footer-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-      display: flex;
-      align-items: center;
-    }
-    .footer-container .footer-copyright {
-      margin-right: auto;
-    }
-    .footer-links {
-      display: flex;
-      gap: 8px;
-      margin: 0 auto;
-    }
-    .footer-links a {
-      color: #fff;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-links a:hover { color: #ccc; }
-    /* KEYFRAMES */
-    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes fadeInLeft { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
-    @keyframes fadeInRight { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .navbar { flex-direction: column; padding: 15px 20px; }
-      .nav-left, .nav-center, .nav-right { flex-direction: column; align-items: flex-start; gap: 10px; }
-      .hero-section { padding: 100px 20px 60px; }
-      .about-section { flex-direction: column; }
-      .werte-container { flex-direction: column; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Über mich – Grabenstein Sales</title>
+<meta name="description" content="Leon Grabenstein über seinen Werdegang, seine Haltung und die Art, wie er mit Startups am Vertrieb arbeitet.">
+<link rel="canonical" href="https://www.grabensteinsales.de/ueber-uns.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Grabenstein Sales">
+<meta property="og:title" content="Über mich – Grabenstein Sales">
+<meta property="og:description" content="Leon Grabenstein über seinen Werdegang, seine Haltung und die Art, wie er mit Startups am Vertrieb arbeitet.">
+<meta property="og:url" content="https://www.grabensteinsales.de/ueber-uns.html">
+<meta property="og:locale" content="de_DE">
+<link rel="icon" href="favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- NAVIGATION -->
-  <nav class="navbar">
-    <div class="nav-left">
-      <a href="startseite.html"><img src="logo2.png" alt="Grabenstein Sales Logo" class="logo-img"></a>
-      <a href="startseite.html">Startseite</a>
-    </div>
-    <div class="nav-center"><h1>Grabenstein Sales</h1></div>
-    <div class="nav-right">
-      <a href="angebot.html">Angebote</a>
-      <a href="kontakt.html">Kontakt</a>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <div class="hero-section">
-    <div class="hero-content">
-      <h2>Über Uns</h2>
-      <p>Erfahre mehr über unser Unternehmen, unsere Werte und unser Team.</p>
-    </div>
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="nav__brand" href="index.html">
+      <img class="nav__logo" src="logo-dunkel.png" alt="" width="320" height="320">
+      <span class="nav__name">Grabenstein Sales</span>
+    </a>
+    <button class="nav__burger" type="button" aria-expanded="false" aria-controls="hauptmenue" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="hauptmenue">
+        <li><a href="index.html">Start</a></li>
+        <li><a href="ueber-uns.html">Über mich</a></li>
+        <li><a href="angebot.html">Leistungen</a></li>
+        <li><a href="ablauf.html">So arbeite ich</a></li>
+        <li><a class="btn btn--primary" href="kontakt.html">Kontakt</a></li>
+    </ul>
   </div>
+</header>
+<main id="main">
 
-  <!-- ABOUT -->
-  <section class="about-section" id="about">
-    <div class="about-text">
-      <h3>Moin, ich bin Leon</h3>
-      <p>Ich helfe Startups dabei, ihren Vertrieb ...</p>
+<section class="hero hero--sub">
+  <div class="wrap hero__inner">
+    <h1>Über mich</h1>
+    <p>Wer hinter Grabenstein Sales steckt – und wie ich arbeite.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap about">
+    <div>
+      <span class="eyebrow">Zur Person</span>
+      <h2>Moin, ich bin Leon</h2>
+      <p>Ich bin Leon Grabenstein und helfe Startups dabei, ihren Vertrieb aufzubauen –
+         von der ersten Kundenansprache bis zu einer Struktur, die auch dann noch trägt,
+         wenn das Team wächst.</p>
+      <p><span class="todo">[Bitte ergänzen: Was hast du vorher gemacht? Ausbildung, Studium,
+         Stationen im Vertrieb, Branchen. Zwei bis drei Sätze reichen – das ist der Absatz,
+         der über Vertrauen entscheidet.]</span></p>
+      <p>Was mich antreibt: Ich sehe zu viele gute Produkte, die scheitern, weil niemand
+         von ihnen erfährt. Ein gutes Produkt verkauft sich eben nicht von allein –
+         es braucht jemanden, der den Weg zum Kunden baut.</p>
+      <a class="btn btn--outline" href="kontakt.html">Lass uns sprechen</a>
     </div>
-    <div class="about-photo">
-      <img src="dein-foto.jpg" alt="Leon">
-    </div>
-  </section>
-
-  <!-- WERTE -->
-  <section class="werte-section">
-    <h2>Unsere Werte</h2>
-    <div class="werte-container">
-      <div class="wert-item"><h4>Integrität</h4><p>...</p></div>
-      <div class="wert-item"><h4>Innovation</h4><p>...</p></div>
-      <div class="wert-item"><h4>Exzellenz</h4><p>...</p></div>
-      <div class="wert-item"><h4>Kundenorientierung</h4><p>...</p></div>
-    </div>
-  </section>
-
-  <!-- GESCHICHTE -->
-  <section class="geschichte-section">
-    <h2>Unsere Geschichte</h2>
-    <p>Grabenstein Sales wurde 2024 ...</p>
-    <p>...</p>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-container">
-      <div class="footer-copyright">&copy; 2025 Grabenstein Sales</div>
-      <div class="footer-links">
-        <a href="impressum.html">Impressum</a>
-        <a href="agb.html">AGB</a>
-        <a href="datenschutz.html">Datenschutz</a>
-        <a href="kontakt.html">Kontakt</a>
+    <div class="about__photo">
+      <div class="about__placeholder">
+        <p>Hier kommt dein Foto hin.<br><br>
+        Speichere es als <strong>leon.jpg</strong> im Projektordner –<br>
+        dann tauscht es sich automatisch ein.</p>
       </div>
     </div>
-  </footer>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="wrap">
+    <div class="section__head section__head--center">
+      <span class="eyebrow">Haltung</span>
+      <h2>Wofür ich stehe</h2>
+      <p class="lead">Vier Punkte, auf die du dich bei der Zusammenarbeit verlassen kannst.</p>
+    </div>
+    <div class="grid grid--4">
+      <article class="card">
+        <h3>Ehrlichkeit</h3>
+        <p>Wenn ich dir nicht helfen kann, sage ich das im Erstgespräch – und nicht,
+           nachdem du bezahlt hast.</p>
+      </article>
+      <article class="card">
+        <h3>Nachvollziehbarkeit</h3>
+        <p>Du weißt jederzeit, woran ich arbeite und warum. Keine Methoden,
+           die ich dir nicht erklären kann.</p>
+      </article>
+      <article class="card">
+        <h3>Praxis vor Theorie</h3>
+        <p>Wir arbeiten an deinen echten Kunden und echten Gesprächen,
+           nicht an Musterbeispielen.</p>
+      </article>
+      <article class="card">
+        <h3>Unabhängigkeit</h3>
+        <p>Ziel ist, dass du mich irgendwann nicht mehr brauchst.
+           Alles, was wir aufbauen, gehört dir.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Passt das zu dir?</h2>
+    <p>Dann lass uns 30 Minuten sprechen und schauen, wo du gerade stehst.</p>
+    <a class="btn btn--primary" href="kontakt.html">Gespräch anfragen</a>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <strong>Grabenstein Sales</strong>
+        <p>Gemeinsam starten. Gemeinsam wachsen.</p>
+      </div>
+      <div>
+        <h4>Seiten</h4>
+        <ul>
+        <li><a href="index.html">Start</a></li>
+        <li><a href="ueber-uns.html">Über mich</a></li>
+        <li><a href="angebot.html">Leistungen</a></li>
+        <li><a href="ablauf.html">So arbeite ich</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Rechtliches</h4>
+        <ul>
+          <li><a href="impressum.html">Impressum</a></li>
+          <li><a href="datenschutz.html">Datenschutzerklärung</a></li>
+          <li><a href="agb.html">AGB</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="mailto:grabenstein.sales@outlook.com">grabenstein.sales@outlook.com</a></li>
+          <li><a href="tel:+491771748147">0177 1748147</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; <span data-year>2026</span> Grabenstein Sales</span>
+      <span>Alle Rechte vorbehalten.</span>
+    </div>
+  </div>
+</footer>
+<script src="js/main.js"></script>
 </body>
 </html>
-
-   
-

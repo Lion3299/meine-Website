@@ -1,265 +1,179 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kontakt – Grabenstein Sales</title>
-
-  <!-- EmailJS SDK einbinden (Async, damit es die Seite nicht blockiert) -->
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-  <script>
-    (function() {
-      // Deine Public Key (User ID) von EmailJS
-      emailjs.init("LysyGFZwKaRolLZqO"); 
-      // Beispiel: emailjs.init("pTw3478ABCDZ_...");
-    })();
-  </script>
-
-  <style>
-    /* RESET */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #fff;
-      color: #333;
-      min-height: 100vh; 
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* NAVBAR (Headline) oben */
-    .navbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px 40px;
-      border-bottom: 2px solid #2E8B57; /* Dünne Linie in Grün */
-      background-color: #fff;
-    }
-
-    .nav-left, .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 40px;
-    }
-    .logo-img {
-      height: 50px;
-      width: auto;
-      transition: transform 0.3s ease;
-     }
-
-    /* Navbar-Links */
-    .navbar a {
-      color: #2E8B57; 
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-    .navbar a:hover {
-      color: #228b4d;
-    }
-
-    /* Hauptbereich */
-    .main-content {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 40px;
-    }
-
-    /* Kontaktbox -> füllt quasi die ganze Seite */
-    .contact-box {
-      width: 100%;
-      max-width: 1200px;
-      background-color: #f5f5f5;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      padding: 40px;
-    }
-
-    .contact-box h1 {
-      font-size: 2rem;
-      color: #2E8B57;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    /* Formular-Layout */
-    .contact-box form {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    /* Name & Firma in einer Reihe */
-    .form-row {
-      display: flex;
-      gap: 20px;
-    }
-    .form-row > div {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .contact-box label {
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-
-    .contact-box input[type="text"],
-    .contact-box input[type="email"],
-    .contact-box textarea {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 1rem;
-      resize: vertical;
-    }
-    .contact-box textarea {
-      min-height: 120px;
-    }
-
-    /* Button */
-    .contact-box button {
-      align-self: flex-start;
-      background-color: #2E8B57;
-      color: #fff;
-      font-weight: bold;
-      border: none;
-      padding: 15px 30px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: background-color 0.3s ease;
-    }
-    .contact-box button:hover {
-      background-color: #228b4d;
-    }
-
-    /* Feedback-Nachricht nach dem Absenden */
-    .success-message, .error-message {
-      margin-top: 20px;
-      padding: 15px;
-      border-radius: 5px;
-      display: none; /* Erst mal versteckt */
-    }
-    .success-message {
-      background-color: #d4edda; /* Hellgrün */
-      color: #155724;
-    }
-    .error-message {
-      background-color: #f8d7da; /* Hellrot */
-      color: #721c24;
-    }
-
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kontakt – Grabenstein Sales</title>
+<meta name="description" content="Schreib Leon Grabenstein eine Nachricht oder ruf direkt an. Das erste Gespräch ist kostenlos und unverbindlich.">
+<link rel="canonical" href="https://www.grabensteinsales.de/kontakt.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Grabenstein Sales">
+<meta property="og:title" content="Kontakt – Grabenstein Sales">
+<meta property="og:description" content="Schreib Leon Grabenstein eine Nachricht oder ruf direkt an. Das erste Gespräch ist kostenlos und unverbindlich.">
+<meta property="og:url" content="https://www.grabensteinsales.de/kontakt.html">
+<meta property="og:locale" content="de_DE">
+<link rel="icon" href="favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="nav__brand" href="index.html">
+      <img class="nav__logo" src="logo-dunkel.png" alt="" width="320" height="320">
+      <span class="nav__name">Grabenstein Sales</span>
+    </a>
+    <button class="nav__burger" type="button" aria-expanded="false" aria-controls="hauptmenue" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="hauptmenue">
+        <li><a href="index.html">Start</a></li>
+        <li><a href="ueber-uns.html">Über mich</a></li>
+        <li><a href="angebot.html">Leistungen</a></li>
+        <li><a href="ablauf.html">So arbeite ich</a></li>
+        <li><a class="btn btn--primary" href="kontakt.html">Kontakt</a></li>
+    </ul>
+  </div>
+</header>
+<main id="main">
 
-  <!-- NAVIGATION -->
-  <nav class="navbar">
-    <div class="nav-left">
-      <!-- Logo -> Link zur Startseite -->
-      <a href="startseite.html">
-        <img src="logo2.png" alt="Grabenstein Sales Logo" class="logo-img">
-      </a>
-    </div>
-    <!-- Nur Link zur Startseite -->
-    <div class="nav-right">
-      <a href="startseite.html">Startseite</a>
-    </div>
-  </nav>
+<section class="hero hero--sub">
+  <div class="wrap hero__inner">
+    <h1>Kontakt</h1>
+    <p>Schreib mir, wo du gerade stehst. Ich melde mich in der Regel innerhalb von
+       24&nbsp;Stunden zurück.</p>
+  </div>
+</section>
 
-  <!-- HAUPTINHALT -->
-  <div class="main-content">
-    <div class="contact-box">
-      <h1>Kontakt</h1>
-      
-      <!-- Formular OHNE action, wir steuern das per JS (EmailJS) -->
-      <form id="contact-form">
-        <div class="form-row">
-          <div>
-            <label for="name">Name *</label>
-            <input type="text" id="name" name="name" placeholder="Dein Name" required>
+<section class="section">
+  <div class="wrap">
+    <div class="grid grid--2" style="align-items:start; gap:44px">
+
+      <div class="card">
+        <h2 style="font-size:1.5rem">Nachricht senden</h2>
+        <form class="form" id="kontaktformular" novalidate>
+          <div class="form__row">
+            <div class="field">
+              <label for="name">Name <span aria-hidden="true">*</span></label>
+              <input type="text" id="name" name="name" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="firma">Unternehmen</label>
+              <input type="text" id="firma" name="firma" autocomplete="organization">
+            </div>
           </div>
-          <div>
-            <label for="firma">Firma</label>
-            <input type="text" id="firma" name="firma" placeholder="Deine Firma (optional)">
-          </div>
-        </div>
-        
-        <div>
-          <label for="email">E-Mail *</label>
-          <input type="email" id="email" name="email" placeholder="Deine E-Mail-Adresse" required>
-        </div>
-        
-        <div>
-          <label for="message">Nachricht *</label>
-          <textarea id="message" name="message" placeholder="Deine Nachricht..." required></textarea>
-        </div>
-        
-        <!-- Absende-Button -->
-        <button type="submit">Absenden</button>
 
-        <!-- Erfolg- oder Fehlermeldung (dynamisch per JavaScript) -->
-        <div class="success-message" id="successMsg">
-          Danke! Deine Nachricht wurde erfolgreich gesendet.
-        </div>
-        <div class="error-message" id="errorMsg">
-          Leider gab es ein Problem beim Senden deiner Nachricht. Versuche es bitte noch einmal.
-        </div>
-      </form>
+          <div class="field">
+            <label for="email">E-Mail <span aria-hidden="true">*</span></label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+          </div>
+
+          <div class="field">
+            <label for="message">Nachricht <span aria-hidden="true">*</span></label>
+            <textarea id="message" name="message" required
+              placeholder="Was verkaufst du, an wen – und woran hakt es gerade?"></textarea>
+          </div>
+
+          <!-- Honeypot gegen Spam-Bots: fuer Menschen unsichtbar -->
+          <div style="position:absolute; left:-9999px" aria-hidden="true">
+            <label for="website">Website</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="consent">
+            <input type="checkbox" id="einwilligung" required>
+            <label for="einwilligung">
+              Ich bin damit einverstanden, dass meine Angaben zur Beantwortung meiner Anfrage
+              verarbeitet und dafür über den Dienstleister EmailJS versendet werden.
+              Details in der <a href="datenschutz.html">Datenschutzerklärung</a>.
+              <span aria-hidden="true">*</span>
+            </label>
+          </div>
+
+          <button class="btn btn--primary" type="submit" id="senden">Nachricht senden</button>
+
+          <p class="form__note">Mit <span aria-hidden="true">*</span> markierte Felder sind
+             Pflichtfelder. Solange du nicht auf „Senden“ klickst, verlassen deine Eingaben
+             deinen Browser nicht.</p>
+
+          <div class="alert alert--ok"   id="erfolg" role="status" hidden>
+            Danke! Deine Nachricht ist raus. Ich melde mich zeitnah bei dir.
+          </div>
+          <div class="alert alert--fail" id="fehler" role="alert" hidden>
+            Das hat leider nicht geklappt. Schreib mir gern direkt an
+            <a href="mailto:grabenstein.sales@outlook.com">grabenstein.sales@outlook.com</a>.
+          </div>
+        </form>
+      </div>
+
+      <div>
+        <h2 style="font-size:1.5rem">Lieber direkt?</h2>
+        <p>Kein Formular nötig – erreich mich einfach so:</p>
+        <p>
+          <strong>E-Mail</strong><br>
+          <a href="mailto:grabenstein.sales@outlook.com">grabenstein.sales@outlook.com</a>
+        </p>
+        <p>
+          <strong>Telefon</strong><br>
+          <a href="tel:+491771748147">0177 1748147</a>
+        </p>
+        <p>
+          <strong>Erreichbarkeit</strong><br>
+          <span class="todo">[z.&nbsp;B. Mo–Fr, 9–18 Uhr]</span>
+        </p>
+        <hr style="border:none; border-top:1px solid var(--c-line); margin:28px 0">
+        <h3>Was passiert nach deiner Anfrage?</h3>
+        <p>Ich melde mich innerhalb von 24 Stunden und schlage einen Termin für ein
+           unverbindliches Gespräch von etwa 30 Minuten vor. Kein Verkaufsgespräch –
+           erst einmal geht es nur darum zu verstehen, wo du stehst.</p>
+      </div>
+
     </div>
   </div>
+</section>
 
-  <script>
-    // Wir holen uns das Formular und hängen eine Submit-Action dran
-    const form = document.getElementById('contact-form');
-    form.addEventListener('submit', function(event) {
-      event.preventDefault(); // Verhindert das normale Abschicken
-
-      // Variablen für die Eingabewerte
-      const name = document.getElementById('name').value;
-      const firma = document.getElementById('firma').value;
-      const email = document.getElementById('email').value;
-      const message = document.getElementById('message').value;
-
-      // E-Mail-Objekt für EmailJS
-      const templateParams = {
-        from_name: name,
-        company_name: firma,
-        reply_to: email,
-        message: message
-      };
-
-      // EmailJS sendet die Daten
-      emailjs.send(
-        "service_fxkf4yj",     // <-- DEINE SERVICE ID hier
-        "template_7ozivz4",    // <-- DEINE TEMPLATE ID hier
-        templateParams
-      )
-      .then(function(response) {
-        console.log('SUCCESS!', response.status, response.text);
-        // Erfolg anzeigen
-        document.getElementById('successMsg').style.display = 'block';
-        document.getElementById('errorMsg').style.display = 'none';
-        // Formular leeren
-        form.reset();
-      }, function(error) {
-        console.log('FAILED...', error);
-        // Fehlermeldung anzeigen
-        document.getElementById('successMsg').style.display = 'none';
-        document.getElementById('errorMsg').style.display = 'block';
-      });
-    });
-  </script>
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <strong>Grabenstein Sales</strong>
+        <p>Gemeinsam starten. Gemeinsam wachsen.</p>
+      </div>
+      <div>
+        <h4>Seiten</h4>
+        <ul>
+        <li><a href="index.html">Start</a></li>
+        <li><a href="ueber-uns.html">Über mich</a></li>
+        <li><a href="angebot.html">Leistungen</a></li>
+        <li><a href="ablauf.html">So arbeite ich</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Rechtliches</h4>
+        <ul>
+          <li><a href="impressum.html">Impressum</a></li>
+          <li><a href="datenschutz.html">Datenschutzerklärung</a></li>
+          <li><a href="agb.html">AGB</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="mailto:grabenstein.sales@outlook.com">grabenstein.sales@outlook.com</a></li>
+          <li><a href="tel:+491771748147">0177 1748147</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; <span data-year>2026</span> Grabenstein Sales</span>
+      <span>Alle Rechte vorbehalten.</span>
+    </div>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+<script src="js/kontakt.js"></script>
 </body>
 </html>
